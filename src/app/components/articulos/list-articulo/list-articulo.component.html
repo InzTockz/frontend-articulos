@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+<mat-card class="container-card">
+  <mat-card-content>
+    <button mat-raised-button color="primary" routerLink="/articulos/register">Registrar</button>
+    <br><br>
+    <div class="container">
+      <table mat-table [dataSource]="articulos" class="mat-elevation-z8">
+        <ng-container matColumnDef="Nro. Articulo">
+          <th mat-header-cell *matHeaderCellDef>Nro. Articulo</th>
+          <td mat-cell *matCellDef="let a">{{a.nroArticulo}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Descripcion">
+          <th mat-header-cell *matHeaderCellDef>Descripcion</th>
+          <td mat-cell *matCellDef="let a">{{a.descripcion}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Presentacion">
+          <th mat-header-cell *matHeaderCellDef>Presentacion</th>
+          <td mat-cell *matCellDef="let a">{{a.presentacion}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Familia">
+          <th mat-header-cell *matHeaderCellDef>Familia</th>
+          <td mat-cell *matCellDef="let a">{{a.familiasDto.descripcion}}</td>
+        </ng-container>
+        <ng-container matColumnDef="SubFamilia">
+          <th mat-header-cell *matHeaderCellDef>Familia</th>
+          <td mat-cell *matCellDef="let a">{{a.subFamiliasDto.descripcion}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Fec. Creacion">
+          <th mat-header-cell *matHeaderCellDef>Fec. Creacion</th>
+          <td mat-cell *matCellDef="let a">{{a.fecCreacion | date: "dd-MM-yyyy"}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Accion">
+          <th mat-header-cell *matHeaderCellDef>Accion</th>
+          <td mat-cell *matCellDef="let a">
+            <button mat-raised-button color="primary" [routerLink]="['/articulos/update', a.id]">Actualizar</button> |
+            <button mat-raised-button color="warn" (click)="deleteArticulos(a.id)" >Eliminar</button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnasArticulos"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnasArticulos"></tr>
+      </table>
+    </div>
+  </mat-card-content>
+</mat-card>
+

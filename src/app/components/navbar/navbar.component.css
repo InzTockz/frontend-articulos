@@ -1,0 +1,28 @@
+.spacer{
+  flex: 1 1 auto;
+}
+
+.color-white{
+  color: white;
+}
+
+.text-size{
+  font-size: 25px;
+}
+
+.margin-left-20{
+  margin-left: 20px;
+}
+
+.mat-button-design{
+  font-size: 17px;
+  color: white;
+  border: none;
+  outline: none;
+}
+
+.mat-button-toggle-checked {
+  background-color: #f78e64 !important; /* Cambia este color por el que prefieras */
+  color: white !important; /* Cambia el color del texto si es necesario */
+  border-color: transparent !important; /* Elimina bordes si es necesario */
+}

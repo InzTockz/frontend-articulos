@@ -1,0 +1,37 @@
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+td {
+  padding-right: 8px;
+}
+
+.center-div{
+  display: flex;
+  justify-content: center;
+}
+
+.center-card-title{
+  display: flex;
+  justify-content: center;
+  padding-bottom: 30px;
+  font-size: 35px;
+}
+
+
+
+.mat-color-red{
+  background-color: red;
+  color: white;
+}
+
+.custom-color-blue {
+  background-color: #00aae4 !important;
+  color: white !important;
+}

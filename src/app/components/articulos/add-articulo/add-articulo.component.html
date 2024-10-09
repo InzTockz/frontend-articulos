@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+<br><br>
+<div class="center-div">
+  <mat-card class="example-form">
+    <mat-card-content>
+      <mat-card-title class="center-title">Registro de Articulos</mat-card-title>
+      <br>
+      <form (ngSubmit)="addArticulos()">
+        <mat-form-field class="example-full-width">
+          <mat-label>Codigo</mat-label>
+          <input [(ngModel)]="descripcion" name="descripcion" matInput>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Descripcion</mat-label>
+          <input [(ngModel)]="presentacion" name="presentacion" matInput>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Familia</mat-label>
+          <mat-select [(ngModel)]="familiaId" name="familiasDto" (selectionChange)="getSubFamilias($event)">
+            <mat-option *ngFor="let f of familias" [value]="f.id">{{f.descripcion}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Subfamilias</mat-label>
+          <mat-select [(ngModel)]="subFamiliaId" name="subFamiliasDto">
+            <mat-option *ngFor="let f of subFamilias" [value]="f.id">{{f.descripcion}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div class="center-div">
+          <button type="submit" mat-raised-button color="primary">Agregar</button>
+          <a mat-raised-button routerLink="/articulos">Regresar</a>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

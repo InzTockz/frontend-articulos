@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+
+<br><br>
+<div class="center-div">
+  <form class="example-form" (ngSubmit)="updateFamilia()">
+    <mat-card-title class="center-card-title">Registrar Familia</mat-card-title>
+    <mat-form-field class="example-full-width" appearance="outline">
+      <input type="hidden" [(ngModel)]="familia.id" name="id">
+      <mat-label>Codigo</mat-label>
+      <input [(ngModel)]="familia.codigo" name="codigo" matInput>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Descripcion</mat-label>
+      <input [(ngModel)]="familia.descripcion" name="descripcion" matInput>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Nomenclatura</mat-label>
+      <input [(ngModel)]="familia.pronombre" name="pronombre" matInput>
+    </mat-form-field>
+    <div class="center-div">
+      <button type="submit" mat-raised-button color="primary" class="margin-right-10">Guardar</button>
+      <a mat-raised-button class="margin-left-10 custom-color-blue" routerLink="/familias">Regresar</a>
+    </div>
+  </form>
+</div>
