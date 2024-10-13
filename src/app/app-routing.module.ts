@@ -13,6 +13,10 @@ import { LoginComponent } from './components/authentication/login/login.componen
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/authentication/register/register.component';
 import { authGuard } from './guards/auth.guard';
+import { UserListComponent } from './components/user/user-list/user-list.component';
+import { FamiliasReporteComponent } from './components/reportes/familias-reporte/familias-reporte.component';
+import { SubfamiliasReporteComponent } from './components/reportes/subfamilias-reporte/subfamilias-reporte.component';
+import { ArticulosReporteComponent } from './components/reportes/articulos-reporte/articulos-reporte.component';
 
 const routes: Routes = [
 
@@ -20,6 +24,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
 
   {path: '', component: HomeComponent, canActivate:[authGuard]},
+  {path: 'user', component: UserListComponent, canActivate:[authGuard]},
 
   {path: 'familias', component: ListFamiliaComponent, canActivate: [authGuard]},
   {path: 'familias/register', component: AddFamiliaComponent, canActivate:[authGuard]},
@@ -31,7 +36,12 @@ const routes: Routes = [
 
   {path: 'articulos', component: ListArticuloComponent, canActivate:[authGuard]},
   {path: 'articulos/register', component: AddArticuloComponent, canActivate:[authGuard]},
-  {path: 'articulos/update/:id', component: UpdateArticuloComponent, canActivate:[authGuard]}
+  {path: 'articulos/update/:id', component: UpdateArticuloComponent, canActivate:[authGuard]},
+
+  {path: 'reportes/familias', component: FamiliasReporteComponent, canActivate:[authGuard]},
+  {path: 'reportes/subfamilias', component: SubfamiliasReporteComponent, canActivate:[authGuard]},
+  {path: 'reportes/articulos', component: ArticulosReporteComponent, canActivate:[authGuard]}
+
 ];
 
 @NgModule({

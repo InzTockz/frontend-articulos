@@ -5,10 +5,17 @@
     <mat-button-toggle routerLink="/subfamilias" class="mat-button-design" routerLinkActive="mat-button-toggle-checked">SubFamilias</mat-button-toggle>
     <mat-button-toggle routerLink="/articulos" class="mat-button-design" routerLinkActive="mat-button-toggle-checked">Articulos</mat-button-toggle>
     <mat-button-toggle class="mat-button-design">Clientes</mat-button-toggle>
-    <mat-button-toggle class="mat-button-design">Reportes</mat-button-toggle>
+    <mat-button-toggle [matMenuTriggerFor]="menuReportes" class="mat-button-design">Reportes</mat-button-toggle>
+    <mat-menu #menuReportes="matMenu" xPosition="after">
+      <button mat-menu-item routerLink="/reportes/familias">Familias</button>
+      <button mat-menu-item routerLink="/reportes/subfamilias">Subfamilias</button>
+      <button mat-menu-item routerLink="/reportes/articulos">Articulos</button>
+    </mat-menu>
   </mat-button-toggle-group>
   <span class="spacer"></span>
-  <a mat-button (click)="logout()" class="color-white btn">
-    <span>Cerrar Sesion</span>
-  </a>
+  <button mat-button [matMenuTriggerFor]="menuUser"><img src="/assets/images/user1.png" style="width: 40px; height: 40px; margin-right: 15px;"></button>
+  <mat-menu #menuUser="matMenu" xPosition="before">
+    <button mat-menu-item routerLink="/user" *ngIf="isAdmin()"><img src="/assets/images/useredit.png" style="width: 20px; height: 20px; margin-right: 5px;">Gestionar usuarios</button>
+    <button (click)="logout()" mat-menu-item><img src="/assets/images/exit.png" style="width: 20px; height: 20px; margin-right: 5px;">Cerrar sesion</button>
+  </mat-menu>
 </mat-toolbar>

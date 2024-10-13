@@ -26,3 +26,8 @@
   color: white !important; /* Cambia el color del texto si es necesario */
   border-color: transparent !important; /* Elimina bordes si es necesario */
 }
+
+.mat-toolbar{
+  padding-bottom: 40px;
+  padding-top: 40px;
+}

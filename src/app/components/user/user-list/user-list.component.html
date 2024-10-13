@@ -1,0 +1,40 @@
+<app-navbar></app-navbar>
+
+<mat-card class="container-card">
+  <mat-card-content>
+    <div class="container">
+      <table mat-table [dataSource]="users" class="mat-elevation-z8">
+        <ng-container matColumnDef="Nombres">
+          <th mat-header-cell *matHeaderCellDef>Nombres</th>
+          <td mat-cell *matCellDef="let u">{{u.name}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Apellidos">
+          <th mat-header-cell *matHeaderCellDef>Apellidos</th>
+          <td mat-cell *matCellDef="let u">{{u.lastName}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Usuario">
+          <th mat-header-cell *matHeaderCellDef>Usuario</th>
+          <td mat-cell *matCellDef="let u">{{u.username}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Fecha de creacion">
+          <th mat-header-cell *matHeaderCellDef>Fecha de creacion</th>
+          <td mat-cell *matCellDef="let u">{{u.dateCreated | date: 'dd/MM/yyyy'}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Rol">
+          <th mat-header-cell *matHeaderCellDef>Rol</th>
+          <td mat-cell *matCellDef="let u">{{u.role === 'ADMIN' ? 'ADMINISTRADOR' : 'USUARIO'}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Accion">
+          <th mat-header-cell *matHeaderCellDef>Accion</th>
+          <td mat-cell *matCellDef="let u">
+            <!--
+            <a mat-raised-button color="primary">Actualizar</a> | --> <a mat-raised-button color="warn" (click)="deleteById(u.id)">Eliminar</a>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnsUsers"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsUsers"></tr>
+      </table>
+    </div>
+  </mat-card-content>
+</mat-card>

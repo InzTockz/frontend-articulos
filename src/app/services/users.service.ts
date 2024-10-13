@@ -19,4 +19,17 @@ export class UsersService {
   getUserId(id:number):Observable<Users>{
     return this.http.get<Users>(`${this.apiUsers}/${id}`);
   }
+
+  getAllUsers():Observable<Users[]>{
+    return this.http.get<Users[]>(this.apiUsers);
+  }
+
+  updateUsers(id:number, users:Users):Observable<Users>{
+    return this.http.put<Users>(`${this.apiUsers}/${id}`, users);
+  }
+
+  deleteUsers(id:number):Observable<void>{
+    return this.http.delete<void>(`${this.apiUsers}/${id}`);
+  }
+
 }

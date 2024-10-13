@@ -33,6 +33,10 @@ import { MatOptionModule } from '@angular/material/core';
 import { RegisterComponent } from './components/authentication/register/register.component';
 import { LoginComponent } from './components/authentication/login/login.component';
 import { HomeComponent } from './components/home/home.component';
+import { UserListComponent } from './components/user/user-list/user-list.component';
+import { FamiliasReporteComponent } from './components/reportes/familias-reporte/familias-reporte.component';
+import { SubfamiliasReporteComponent } from './components/reportes/subfamilias-reporte/subfamilias-reporte.component';
+import { ArticulosReporteComponent } from './components/reportes/articulos-reporte/articulos-reporte.component';
 
 
 @NgModule({
@@ -50,7 +54,11 @@ import { HomeComponent } from './components/home/home.component';
     NavbarComponent,
     RegisterComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    UserListComponent,
+    FamiliasReporteComponent,
+    SubfamiliasReporteComponent,
+    ArticulosReporteComponent
   ],
   imports: [
     BrowserModule,
