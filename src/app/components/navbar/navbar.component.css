@@ -31,3 +31,10 @@
   padding-bottom: 40px;
   padding-top: 40px;
 }
+
+.logo-custom {
+  width: 65px;
+  height: 65px;
+  border-radius: 25%;
+  margin-top: 5px;
+}

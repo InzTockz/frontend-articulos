@@ -37,6 +37,7 @@ import { UserListComponent } from './components/user/user-list/user-list.compone
 import { FamiliasReporteComponent } from './components/reportes/familias-reporte/familias-reporte.component';
 import { SubfamiliasReporteComponent } from './components/reportes/subfamilias-reporte/subfamilias-reporte.component';
 import { ArticulosReporteComponent } from './components/reportes/articulos-reporte/articulos-reporte.component';
+import { ClientesSapComponent } from './components/clientes-sap/clientes-sap.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { ArticulosReporteComponent } from './components/reportes/articulos-repor
     UserListComponent,
     FamiliasReporteComponent,
     SubfamiliasReporteComponent,
-    ArticulosReporteComponent
+    ArticulosReporteComponent,
+    ClientesSapComponent
   ],
   imports: [
     BrowserModule,
