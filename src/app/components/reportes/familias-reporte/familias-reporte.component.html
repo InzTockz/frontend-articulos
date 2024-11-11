@@ -1,13 +1,12 @@
-
 <div class="style-div-main">
-<app-navbar></app-navbar>
+    <app-navbar></app-navbar>
 
     <div class="style-div-1">
         <div class="container-tittle-d1">
             <h1>Generar Reporte de Familias</h1>
         </div>
         <div class="container-button-d1">
-            <a mat-raised-button color="primary" >Exportar a PDF</a>
+            <a mat-raised-button color="primary">Exportar a PDF</a>
             <a mat-raised-button class="btn-ver" (click)="getFamilia()">Ver</a>
         </div>
     </div>
@@ -28,7 +27,7 @@
                 </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="indice"></tr>
-                <td mat-row *matRowDef="let row; columns: indice;"></td>
+                <tr mat-row *matRowDef="let row; columns: indice;"></tr>
             </table>
         </div>
     </div>

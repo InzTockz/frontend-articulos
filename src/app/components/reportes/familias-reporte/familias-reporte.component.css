@@ -6,7 +6,14 @@
 .style-div-2 { 
     display: flex;
     justify-content: center;
-    flex-direction: column;
+}
+
+.style-div-2 div table th {
+    text-align: center;
+}
+
+.style-div-2 div table td {
+    text-align: center;
 }
 
 .container-tittle-d1 { 

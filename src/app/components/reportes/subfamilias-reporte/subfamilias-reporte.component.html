@@ -1,2 +1,44 @@
-<app-navbar></app-navbar>
-<p>subfamilias-reporte works!</p>
+<div class="style-div-main">
+    <app-navbar></app-navbar>
+
+    <div class="style-div-1">
+        <div class="container-tittle-d1">
+            <h1>Generar Reporte de SubFamilias</h1>
+        </div>
+        <div class="container-select-d1">
+            <mat-form-field>
+                <mat-label>Familias</mat-label>
+                <mat-select [(ngModel)]="idFamilia" [formControl]="familiaControl" required>
+                    <mat-option value="all">Todas las Familias</mat-option>
+                    <mat-option *ngFor="let f of familia" [value]="f.id">{{f.descripcion}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="familiaControl.hasError('required')">Por favor elige alguna familia</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="container-button-d1">
+            <a mat-raised-button color="primary">Exportar a PDF</a>
+            <a mat-raised-button class="btn-ver" (click)="getSubFamilias()">Ver</a>
+        </div>
+    </div>
+    <div class="style-div-2">
+        <div class="container-table mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource">
+                <ng-container matColumnDef="Codigo">
+                    <th mat-header-cell *matHeaderCellDef>Codigo</th>
+                    <td mat-cell *matCellDef="let sb">{{sb.codigo}}</td>
+                </ng-container>
+                <ng-container matColumnDef="Descripcion">
+                    <th mat-header-cell *matHeaderCellDef>Descripcion</th>
+                    <td mat-cell *matCellDef="let sb">{{sb.descripcion}}</td>
+                </ng-container>
+                <ng-container matColumnDef="Nomenclatura">
+                    <th mat-header-cell *matHeaderCellDef>Nomenclatura</th>
+                    <td mat-cell *matCellDef="let sb">{{sb.familias.descripcion}}</td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="indice"></tr>
+                <tr mat-row *matRowDef="let row; columns: indice;"></tr>
+            </table>
+        </div>
+    </div>
+</div>
