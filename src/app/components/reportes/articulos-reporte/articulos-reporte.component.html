@@ -1,2 +1,66 @@
-<app-navbar></app-navbar>
-<p>articulos-reporte works!</p>
+<div class="style-div-main">
+    <app-navbar></app-navbar>
+
+    <div class="style-div-1">
+        <div class="container-tittle-d1">
+            <h1>Generar Reporte de Articulos</h1>
+        </div>
+        <div class="container-select-d1">
+            <div>
+                <mat-form-field>
+                    <mat-label>Fecha inicio</mat-label>
+                    <input matInput [matDatepicker]="picker1" [(ngModel)]="fecha1">
+                    <mat-hint >DD/MM/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div style="margin-left: 10px;">
+                <mat-form-field>
+                    <mat-label>Fecha inicio</mat-label>
+                    <input matInput [matDatepicker]="picker2" [(ngModel)]="fecha2">
+                    <mat-hint >DD/MM/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="container-button-d1">
+            <a mat-raised-button color="primary">Exportar a PDF</a>
+            <a mat-raised-button class="btn-ver" (click)="getArticulosById()">Ver</a>
+        </div>
+    </div>
+    <div class="style-div-2">
+        <div class="container-table mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource">
+                <ng-container matColumnDef="ARTICULO">
+                    <th mat-header-cell *matHeaderCellDef>ARTICULO</th>
+                    <td mat-cell *matCellDef="let a">{{a.codigo}}</td>
+                </ng-container>
+                <ng-container matColumnDef="DESCRIPCION">
+                    <th mat-header-cell *matHeaderCellDef>DESCRIPCION</th>
+                    <td mat-cell *matCellDef="let a">{{a.descripcion}}</td>
+                </ng-container>
+                <ng-container matColumnDef="PRESENTACION">
+                    <th mat-header-cell *matHeaderCellDef>PRESENTACION</th>
+                    <td mat-cell *matCellDef="let a">{{a.presentacion}}</td>
+                </ng-container>
+                <ng-container matColumnDef="FAMILIA">
+                    <th mat-header-cell *matHeaderCellDef>FAMILIA</th>
+                    <td mat-cell *matCellDef="let a">{{a.familiasDto.descripcion}}</td>
+                </ng-container>
+                <ng-container matColumnDef="SUBFAMILIA">
+                    <th mat-header-cell *matHeaderCellDef>SUBFAMILIA</th>
+                    <td mat-cell *matCellDef="let a">{{a.subFamiliasDto.descripcion}}</td>
+                </ng-container>
+                <ng-container matColumnDef="FECHA">
+                    <th mat-header-cell *matHeaderCellDef>FECHA</th>
+                    <td mat-cell *matCellDef="let a">{{a.fecCreacion}}</td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="indice"></tr>
+                <tr mat-row *matRowDef="let row; columns: indice;"></tr>
+            </table>
+        </div>
+    </div>
+</div>

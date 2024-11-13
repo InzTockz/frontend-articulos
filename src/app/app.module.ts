@@ -29,7 +29,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
-import { MatOptionModule } from '@angular/material/core';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule, MatOptionModule, NativeDateAdapter } from '@angular/material/core';
 import { RegisterComponent } from './components/authentication/register/register.component';
 import { LoginComponent } from './components/authentication/login/login.component';
 import { HomeComponent } from './components/home/home.component';
@@ -38,7 +38,22 @@ import { FamiliasReporteComponent } from './components/reportes/familias-reporte
 import { SubfamiliasReporteComponent } from './components/reportes/subfamilias-reporte/subfamilias-reporte.component';
 import { ArticulosReporteComponent } from './components/reportes/articulos-reporte/articulos-reporte.component';
 import { ClientesSapComponent } from './components/clientes-sap/clientes-sap.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { CustomDateAdapter } from './utils/custom-date-adapter';
+import { DatePipe } from '@angular/common';
 
+/* Define el formato de la fecha con ceros iniciales
+export const MY_DATE_FORMATS = {
+  parse: {
+    dateInput: 'DD/MM/YYYY',
+  },
+  display: {
+    dateInput: 'DD/MM/YYYY',
+    monthYearLabel: 'MM/YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};*/
 
 @NgModule({
   declarations: [
@@ -82,9 +97,16 @@ import { ClientesSapComponent } from './components/clientes-sap/clientes-sap.com
     MatDialogModule,
     MatSelectModule,
     MatOptionModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
-  providers: [],
+  providers: [
+    //{ provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS},
+    DatePipe,
+    { provide: MAT_DATE_LOCALE, useValue: 'es-ES'},
+    { provide: DateAdapter, useClass: CustomDateAdapter}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

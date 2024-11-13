@@ -21,6 +21,10 @@ export class ArticulosService {
     return this.http.get<Articulos>(`${this.articulosApi}/${id}`, {headers: this.headerService.headers});
   }
 
+  getArticulosFechas(fecha1:string, fecha2:string):Observable<Articulos[]>{
+    return this.http.get<Articulos[]>(`${this.articulosApi}/date?fecha1=${fecha1}&fecha2=${fecha2}`);
+  }
+
   addArticulos(articulos:Articulos):Observable<Articulos>{
     return this.http.post<Articulos>(this.articulosApi, articulos, {headers: this.headerService.headers});
   }

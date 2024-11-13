@@ -1,0 +1,72 @@
+.style-div-1 {
+    margin-bottom: 40px;
+    display: block;
+}
+
+.style-div-2 { 
+    display: flex;
+    justify-content: center;
+}
+
+.style-div-2 div table th {
+    text-align: center;
+    font-size: 17px;
+}
+
+.style-div-2 div table td {
+    text-align: center;
+}
+
+.container-tittle-d1 { 
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.container-select-d1 {
+    display: flex;
+    justify-content: center;
+}
+
+.container-tittle-d1 h1 {
+    font-size: 2.5rem;
+}
+
+.container-button-d1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.btn-ver {
+    background-color: rgb(31, 229, 229) !important;
+}
+
+.container-button-d1 a { 
+    width: 15%;
+}
+
+.container-table {
+    width: 70%;
+}
+
+.container-table table ng-container th {
+    text-align: center;
+}
+
+.style-div-main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    padding-left: 4%;
+    padding-right: 4%;
+    margin-top: 100px;
+}
+
+* {
+    box-sizing: border-box;
+}
