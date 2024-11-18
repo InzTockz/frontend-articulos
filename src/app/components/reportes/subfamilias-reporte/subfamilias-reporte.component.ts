@@ -3,8 +3,10 @@ import { FormControl, Validators } from '@angular/forms';
 import { Familias } from 'src/app/models/familias';
 import { Subfamilias } from 'src/app/models/subfamilias';
 import { FamiliasService } from 'src/app/services/familias.service';
+import { ReportesService } from 'src/app/services/reportes.service';
 import { SubfamiliasService } from 'src/app/services/subfamilias.service';
 import Swal from 'sweetalert2';
+import { ClientesSapComponent } from '../../clientes-sap/clientes-sap.component';
 
 @Component({
   selector: 'app-subfamilias-reporte',
@@ -13,21 +15,21 @@ import Swal from 'sweetalert2';
 })
 export class SubfamiliasReporteComponent implements OnInit {
 
-  familia:Familias[] = [];
-  dataSource:Subfamilias[] = [];
-  indice:string[] = ['Codigo', 'Descripcion', 'Nomenclatura'];
+  familia: Familias[] = [];
+  dataSource: Subfamilias[] = [];
+  indice: string[] = ['Codigo', 'Descripcion', 'Nomenclatura'];
 
   familiaControl = new FormControl<Familias | null>(null, Validators.required);
-  
-  idFamilia:any;
 
-  constructor(private subFamiliaService:SubfamiliasService, private familiaService:FamiliasService){}
+  idFamilia: any;
+
+  constructor(private subFamiliaService: SubfamiliasService, private familiaService: FamiliasService, private reporteSubFamiliaService: ReportesService) { }
 
   ngOnInit(): void {
     this.getFamilias();
   }
 
-  getFamilias():void{
+  getFamilias(): void {
     this.familiaService.getAllFamilias().subscribe(
       data => {
         this.familia = data;
@@ -35,25 +37,52 @@ export class SubfamiliasReporteComponent implements OnInit {
     )
   }
 
-  getSubFamilias():void{
+  getSubFamilias(): void {
     let id = this.idFamilia;
-    if(id=='all'){
+    if (id == 'all') {
       this.subFamiliaService.getAllSubFamilias().subscribe(
         data => {
           this.dataSource = data;
         }
       )
-    } else if(id==undefined){
+    } else if (id == undefined) {
       Swal.fire({
         text: 'No ha seleccionado la familia',
         icon: 'warning'
       });
     } else {
-      this.subFamiliaService.getSubFamiliasByFamilias(id).subscribe(
+      let idFam: number = id;
+      this.subFamiliaService.getSubFamiliasByFamilias(idFam).subscribe(
         data => {
           this.dataSource = data;
         }
       );
     }
+  }
+
+  reporteSubFamilia(): void {
+
+    if (this.idFamilia != 'all') {
+      let idFam: number = this.idFamilia
+      this.reporteSubFamiliaService.reporteSubFamiliasPorFamilia(this.idFamilia).subscribe(
+        response => {
+          const url = window.URL.createObjectURL(response);
+          const link = document.createElement('a');
+
+          link.href = url;
+          link.download = 'Reporte SubFamilias';
+
+          link.click();
+        });
+    } else {
+      this.reporteSubFamiliaService.reporteSubFamilias().subscribe(
+        response => {
+          const url = window.URL.createObjectURL(response);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = "Reporte SubFamlias";
+          link.click();
+        });
+    };
   }
 }
