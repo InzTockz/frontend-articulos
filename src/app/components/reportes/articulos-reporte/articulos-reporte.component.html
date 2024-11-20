@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="container-button-d1">
-            <a mat-raised-button color="primary">Exportar a PDF</a>
+            <a mat-raised-button color="primary" (click)="getReporteArticulos()">Exportar a PDF</a>
             <a mat-raised-button class="btn-ver" (click)="getArticulosById()">Ver</a>
         </div>
     </div>
@@ -35,7 +35,7 @@
             <table mat-table [dataSource]="dataSource">
                 <ng-container matColumnDef="ARTICULO">
                     <th mat-header-cell *matHeaderCellDef>ARTICULO</th>
-                    <td mat-cell *matCellDef="let a">{{a.codigo}}</td>
+                    <td mat-cell *matCellDef="let a">{{a.nroArticulo}}</td>
                 </ng-container>
                 <ng-container matColumnDef="DESCRIPCION">
                     <th mat-header-cell *matHeaderCellDef>DESCRIPCION</th>
@@ -55,7 +55,7 @@
                 </ng-container>
                 <ng-container matColumnDef="FECHA">
                     <th mat-header-cell *matHeaderCellDef>FECHA</th>
-                    <td mat-cell *matCellDef="let a">{{a.fecCreacion}}</td>
+                    <td mat-cell *matCellDef="let a">{{a.fecCreacion | date: 'dd/MM/yyyy'}}</td>
                 </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="indice"></tr>

@@ -23,4 +23,8 @@ export class ReportesService {
     return this.http.get(`${this.reportesApi}/reportSubFamiliasIdFamilias/${id}`, { responseType: 'blob'})
   }
 
+  reporteArticulosPorFechas(fecha1:string, fecha2:string):Observable<Blob>{
+    return this.http.get(`${this.reportesApi}/reportArticulosFechas?fecha1=${fecha1}&fecha2=${fecha2}`, { responseType: 'blob'});
+  }
+
 }
