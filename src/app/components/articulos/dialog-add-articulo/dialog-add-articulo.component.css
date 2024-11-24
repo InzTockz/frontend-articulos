@@ -1,0 +1,24 @@
+.container-main{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.container-sub-main-1{
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+
+}
+
+.container-sub-main-2{
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+
+}
+
+.container-sub-main-3{
+  display: flex;
+}

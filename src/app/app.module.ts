@@ -41,6 +41,7 @@ import { ClientesSapComponent } from './components/clientes-sap/clientes-sap.com
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { CustomDateAdapter } from './utils/custom-date-adapter';
 import { DatePipe } from '@angular/common';
+import { DialogAddArticuloComponent } from './components/articulos/dialog-add-articulo/dialog-add-articulo.component';
 
 /* Define el formato de la fecha con ceros iniciales
 export const MY_DATE_FORMATS = {
@@ -75,7 +76,8 @@ export const MY_DATE_FORMATS = {
     FamiliasReporteComponent,
     SubfamiliasReporteComponent,
     ArticulosReporteComponent,
-    ClientesSapComponent
+    ClientesSapComponent,
+    DialogAddArticuloComponent
   ],
   imports: [
     BrowserModule,

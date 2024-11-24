@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Articulos } from 'src/app/models/articulos';
 import { ArticulosService } from 'src/app/services/articulos.service';
 import Swal from 'sweetalert2';
+import { DialogAddArticuloComponent } from '../dialog-add-articulo/dialog-add-articulo.component';
 
 @Component({
   selector: 'app-list-articulo',
@@ -13,10 +15,18 @@ export class ListArticuloComponent implements OnInit{
   articulos:Articulos[] = [];
   columnasArticulos:string[] = ['Nro. Articulo', 'Descripcion', 'Presentacion', 'Familia', 'SubFamilia', 'Fec. Creacion', 'Accion'];
 
-  constructor(private articulosService:ArticulosService){}
+  constructor(private articulosService:ArticulosService, public dialog:MatDialog){}
 
   ngOnInit(): void {
     this.getArticulos();
+  }
+
+  openDialog(enterAnimationDuration:string, exitAnimationDuration:string):void{
+    this.dialog.open(DialogAddArticuloComponent, {
+      //width: '40%',
+      enterAnimationDuration,
+      exitAnimationDuration
+    });
   }
 
   getArticulos():void{
