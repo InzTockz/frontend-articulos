@@ -1,0 +1,40 @@
+<h1 mat-dialog-title>Registrar Articulos</h1>
+
+<form (ngSubmit)="actualizarArticulos()" #formValid="ngForm">
+  <mat-dialog-content>
+    <div class="container-main">
+      <div class="container-sub-main-1">
+        <mat-form-field appearance="outline">
+          <mat-label>Descripcion</mat-label>
+          <input matInput [(ngModel)]="descripcion" name="descripcion" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Presentacion</mat-label>
+          <input matInput [(ngModel)]="presentacion" name="presentacion" required>
+        </mat-form-field>
+      </div>
+      <div class="container-sub-main-2">
+        <mat-form-field appearance="outline">
+          <mat-label>Familia</mat-label>
+          <mat-select [(ngModel)]="familiaId" name="familias" (valueChange)="getSubFamiliasId($event)" required>
+            <mat-option *ngFor="let f of familias" [value]="f.id">
+              {{f.descripcion}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>SubFamilia</mat-label>
+          <mat-select [(ngModel)]="subFamiliaId" name="subFamilias" required>
+            <mat-option *ngFor="let sb of subFamilias" [value]="sb.id">
+              {{sb.descripcion}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="center">
+    <button mat-raised-button mat-dialog-close>Cerrar</button>
+    <button mat-raised-button color="primary" type="submit">Registrar</button>
+  </mat-dialog-actions>
+</form>

@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit{
 
   logout():void{
     this.router.navigate(['/login']);
-    this.authenticationService.removeItem('token');
+    this.authenticationService.clear();
     this.toastr.error('Session Finalizada');
     console.log(this.authenticationService.getItem('token'));
   }

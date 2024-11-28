@@ -4,13 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AddFamiliaComponent } from './components/familias/add-familia/add-familia.component';
 import { ListFamiliaComponent } from './components/familias/list-familia/list-familia.component';
 import { UpdateFamiliaComponent } from './components/familias/update-familia/update-familia.component';
 import { UpdateSubfamiliaComponent } from './components/subfamilias/update-subfamilia/update-subfamilia.component';
 import { ListSubfamiliaComponent } from './components/subfamilias/list-subfamilia/list-subfamilia.component';
-import { AddSubfamiliaComponent } from './components/subfamilias/add-subfamilia/add-subfamilia.component';
-import { AddArticuloComponent } from './components/articulos/add-articulo/add-articulo.component';
 import { ListArticuloComponent } from './components/articulos/list-articulo/list-articulo.component';
 import { UpdateArticuloComponent } from './components/articulos/update-articulo/update-articulo.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -42,6 +39,11 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { CustomDateAdapter } from './utils/custom-date-adapter';
 import { DatePipe } from '@angular/common';
 import { DialogAddArticuloComponent } from './components/articulos/dialog-add-articulo/dialog-add-articulo.component';
+import { DialogAddFamiliaComponent } from './components/familias/dialog-add-familia/dialog-add-familia.component';
+import { DialogUpdateFamiliaComponent } from './components/familias/dialog-update-familia/dialog-update-familia.component';
+import { DialogAddSubfamiliaComponent } from './components/subfamilias/dialog-add-subfamilia/dialog-add-subfamilia.component';
+import { DialogUpdateSubfamiliaComponent } from './components/subfamilias/dialog-update-subfamilia/dialog-update-subfamilia.component';
+import { DialogUpdateArticulosComponent } from './components/articulos/dialog-update-articulos/dialog-update-articulos.component';
 
 /* Define el formato de la fecha con ceros iniciales
 export const MY_DATE_FORMATS = {
@@ -59,13 +61,10 @@ export const MY_DATE_FORMATS = {
 @NgModule({
   declarations: [
     AppComponent,
-    AddFamiliaComponent,
     ListFamiliaComponent,
     UpdateFamiliaComponent,
     UpdateSubfamiliaComponent,
     ListSubfamiliaComponent,
-    AddSubfamiliaComponent,
-    AddArticuloComponent,
     ListArticuloComponent,
     UpdateArticuloComponent,
     NavbarComponent,
@@ -77,7 +76,12 @@ export const MY_DATE_FORMATS = {
     SubfamiliasReporteComponent,
     ArticulosReporteComponent,
     ClientesSapComponent,
-    DialogAddArticuloComponent
+    DialogAddArticuloComponent,
+    DialogAddFamiliaComponent,
+    DialogUpdateFamiliaComponent,
+    DialogAddSubfamiliaComponent,
+    DialogUpdateSubfamiliaComponent,
+    DialogUpdateArticulosComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Registar Articulo</h1>
+<form (ngSubmit)="registrarFamilia()" #formValid="ngForm">
+    <div mat-dialog-content>
+        <div class="container-main">
+            <mat-form-field>
+                <mat-label>Codigo</mat-label>
+                <input matInput [(ngModel)]="familia.codigo" name="codigo" required>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Descripcion</mat-label>
+                <input matInput [(ngModel)]="familia.descripcion" name="descripcion" required>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Nomenclatura</mat-label>
+                <input matInput [(ngModel)]="familia.pronombre" name="pronombre" required>
+            </mat-form-field>
+        </div>
+    </div>
+    <div mat-dialog-actions align="center">
+        <button mat-raised-button mat-dialog-close>Cerrar</button>
+        <button type="submit" mat-raised-button color="primary" [disabled]="!formValid.valid">Registrar</button>
+    </div>
+</form>

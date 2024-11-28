@@ -1,8 +1,13 @@
+import { DialogRef } from '@angular/cdk/dialog';
 import { FamiliasService } from './../../../services/familias.service';
 import { Component, OnInit } from '@angular/core';
 import { Subfamilias } from 'src/app/models/subfamilias';
 import { SubfamiliasService } from 'src/app/services/subfamilias.service';
 import Swal from 'sweetalert2';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogAddSubfamiliaComponent } from '../dialog-add-subfamilia/dialog-add-subfamilia.component';
+import { DialogUpdateFamiliaComponent } from '../../familias/dialog-update-familia/dialog-update-familia.component';
+import { DialogUpdateSubfamiliaComponent } from '../dialog-update-subfamilia/dialog-update-subfamilia.component';
 
 @Component({
   selector: 'app-list-subfamilia',
@@ -14,10 +19,39 @@ export class ListSubfamiliaComponent implements OnInit{
   dataSource:Subfamilias[] = [];
   displayedColumns:string[] = ['Codigo', 'Descripcion', 'Familia', 'Accion'];
 
-  constructor(private subFamiliasService:SubfamiliasService, private familiaService:FamiliasService){}
+  constructor(private subFamiliasService:SubfamiliasService, private familiaService:FamiliasService, public dialog:MatDialog){}
 
   ngOnInit(): void {
     this.getSubFamilias();
+  }
+
+  openDialog1(enterAnimationDuration:string, exitAnimationDuration:string):void{
+    const dialogRef = this.dialog.open(DialogAddSubfamiliaComponent,
+      {
+        enterAnimationDuration,
+        exitAnimationDuration
+      }
+    );
+    dialogRef.afterClosed().subscribe(
+      () => {
+        this.getSubFamilias();
+      }
+    );
+  }
+
+  openDialog2(enterAnimationDuration:string, exitAnimationDuration:string, id:number):void{
+    const dialogRef = this.dialog.open(DialogUpdateSubfamiliaComponent,
+      {
+        data: id,
+        enterAnimationDuration,
+        exitAnimationDuration
+      }
+    );
+    dialogRef.afterClosed().subscribe(
+      () => {
+        this.getSubFamilias();
+      }
+    );
   }
 
   getSubFamilias():void{

@@ -2,7 +2,7 @@
 
 <mat-card class="container-card">
   <mat-card-content>
-    <button mat-raised-button color="primary" routerLink="/subfamilias/register">Registrar</button>
+    <button mat-raised-button color="primary" (click)="openDialog1('400ms', '400ms')">Registrar subfamilia</button>
     <br><br>
     <div class="container">
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -21,7 +21,7 @@
         <ng-container matColumnDef="Accion">
           <th mat-header-cell *matHeaderCellDef>Accion</th>
           <td mat-cell *matCellDef="let sb">
-            <button mat-raised-button color="primary" [routerLink]="['/subfamilias/update', sb.id]">Actualizar</button> |
+            <button mat-raised-button color="primary" (click)="openDialog2('400ms', '400ms', sb.id)">Actualizar</button> |
             <button mat-raised-button color="warn" (click)="deleteSubFamilias(sb.id)" >Eliminar</button>
           </td>
         </ng-container>

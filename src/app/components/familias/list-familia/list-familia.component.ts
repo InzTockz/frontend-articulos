@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { Familias } from 'src/app/models/familias';
 import { FamiliasService } from 'src/app/services/familias.service';
 import Swal from 'sweetalert2';
+import { DialogAddFamiliaComponent } from '../dialog-add-familia/dialog-add-familia.component';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogUpdateFamiliaComponent } from '../dialog-update-familia/dialog-update-familia.component';
 
 @Component({
   selector: 'app-list-familia',
@@ -14,11 +17,41 @@ export class ListFamiliaComponent {
   displayedColumns: string[] = ['Codigo', 'Descripcion', 'Nomenclatura', 'Accion'];
   dataSource: Familias[] = [];
 
-  constructor(private familiasService: FamiliasService, private router:Router) {
+  constructor(private familiasService: FamiliasService, private router:Router, public dialog:MatDialog) {
   }
 
   ngOnInit(): void {
     this.getFamilias();
+  }
+
+  openDialog1(enterAnimationDuration:string, exitAnimationDuration:string):void{
+    const dialogRef = this.dialog.open(DialogAddFamiliaComponent, 
+      {
+        enterAnimationDuration,
+        exitAnimationDuration
+      });
+
+      dialogRef.afterClosed().subscribe(
+        () => {
+          this.getFamilias();
+        }
+      );
+  }
+
+  openDialog2(enterAnimationDuration:string, exitAnimationDuration:string, id:number):void{
+    console.log('id es: ' + id)
+    const dialogRef = this.dialog.open(DialogUpdateFamiliaComponent, 
+      {
+        data: id,
+        enterAnimationDuration,
+        exitAnimationDuration
+      });
+
+      dialogRef.afterClosed().subscribe(
+        () => {
+          this.getFamilias();
+        }
+      );
   }
 
   getFamilias(): void {

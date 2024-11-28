@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Actualizar Familia</h1>
+<form (ngSubmit)="registrarSubFamilia()" #formValid="ngForm">
+    <div mat-dialog-content>
+        <div class="container-main">
+            <mat-form-field>
+                <mat-label>Codigo</mat-label>
+                <input matInput [(ngModel)]="codigo" name="codigo" required>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Descripcion</mat-label>
+                <input matInput [(ngModel)]="descripcion" name="descripcion" required>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Familia</mat-label>
+                <mat-select [(ngModel)]="familiaId" name="familias">
+                    <mat-option *ngFor="let f of familias" [value]="f.id">
+                        {{f.descripcion}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div mat-dialog-actions align="center">
+        <button mat-raised-button mat-dialog-close>Cerrar</button>
+        <button mat-raised-button color="primary" [disabled]="!formValid.valid">Registrar</button>
+    </div>
+</form>

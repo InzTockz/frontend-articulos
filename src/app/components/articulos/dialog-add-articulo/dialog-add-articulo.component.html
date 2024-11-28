@@ -1,30 +1,38 @@
 <h1 mat-dialog-title>Registrar Articulos</h1>
 
-<form>
+<form #formValid="ngForm">
   <mat-dialog-content>
     <div class="container-main">
       <div class="container-sub-main-1">
         <mat-form-field appearance="outline">
           <mat-label>Descripcion</mat-label>
-          <input matInput [(ngModel)]="articulo.descripcion" name="descripcion">
+          <input matInput [(ngModel)]="descripcion" name="descripcion" required>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Presentacion</mat-label>
-          <input matInput [(ngModel)]="articulo.presentacion" name="presentacion">
+          <input matInput [(ngModel)]="presentacion" name="presentacion" required>
         </mat-form-field>
       </div>
       <div class="container-sub-main-2">
         <mat-form-field appearance="outline">
           <mat-label>Familia</mat-label>
-          <input matInput [(ngModel)]="articulo.familiasDto.descripcion" name="familiasDto">
+          <mat-select [(ngModel)]="familiaId" name="familias" (valueChange)="getSubFamiliasId($event)" required>
+            <mat-option *ngFor="let f of familias" [value]="f.id">
+              {{f.descripcion}}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>SubFamilia</mat-label>
-          <input matInput [(ngModel)]="articulo.subFamiliasDto.descripcion" name="subFamiliasDto">
+          <mat-select [(ngModel)]="subFamiliaId" name="subFamilias" required>
+            <mat-option *ngFor="let sb of subFamilias" [value]="sb.id">
+              {{sb.descripcion}}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
       <div class="container-sub-main-3">
-        <a mat-raised-button color="primary" (click)="addArticuloTemp()">Agregar</a>
+        <a mat-raised-button color="primary" (click)="addArticuloTemp()" [disabled]="!formValid.valid">Agregar</a>
       </div>
       <div class="container-sub-main-4">
         <table mat-table [dataSource]="contenido">
@@ -46,9 +54,8 @@
           </ng-container>
           <ng-container matColumnDef="Accion">
             <th mat-header-cell *matHeaderCellDef>Accion</th>
-            <td mat-cell *matCellDef="let a">
-              <a mat-raised-button color="danger">Eliminar</a>
-              <a mat-raised-button color="caution">Actualizar</a>
+            <td mat-cell *matCellDef="let a; let t = index">
+              <a mat-raised-button color="Danger" (click)="deleteArticuloTemp(t)">Eliminar</a>
             </td>
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="encabezado"></tr>
@@ -57,8 +64,8 @@
       </div>
     </div>
   </mat-dialog-content>
-  <mat-dialog-actions>
-    <button mat-button mat-dialog-close>Cerrar</button>
-    <button mat-button mat-dialog-close color="primary">Registrar</button>
+  <mat-dialog-actions align="center">
+    <button mat-raised-button (click)="closeDialog()">Cerrar</button>
+    <button mat-raised-button (click)="registrarArticulos()" color="primary">Registrar</button>
   </mat-dialog-actions>
 </form>
