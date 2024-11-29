@@ -13,11 +13,11 @@ export class HeaderService {
   constructor(private authenticationService: AuthenticationService) {
 
     if (this.authenticationService.getItem('token') != null) {
-      this.token = this.authenticationService.getItem('token').token;
+      const token = this.authenticationService.getItem('token').token;
       this.headers = new HttpHeaders(
         {
-          'Content-type': 'application/json',
-          'Authorization': `${this.token}`
+          'Content-Type': 'application/json',
+          'Authorization': `${token}`
         }
       );
     }

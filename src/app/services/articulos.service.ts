@@ -11,29 +11,29 @@ export class ArticulosService {
 
   private articulosApi:string = 'http://localhost:8080/articulos';
 
-  constructor(private http:HttpClient, private headerService:HeaderService) { }
+  constructor(private http:HttpClient, private header:HeaderService) { }
 
   getAllArticulos():Observable<Articulos[]>{
-    return this.http.get<Articulos[]>(this.articulosApi, {headers: this.headerService.headers});
+    return this.http.get<Articulos[]>(this.articulosApi, {headers: this.header.headers});
   }
 
   getIdArticulos(id:number):Observable<Articulos>{
-    return this.http.get<Articulos>(`${this.articulosApi}/${id}`, {headers: this.headerService.headers});
+    return this.http.get<Articulos>(`${this.articulosApi}/${id}`, {headers: this.header.headers});
   }
 
   getArticulosFechas(fecha1:string, fecha2:string):Observable<Articulos[]>{
-    return this.http.get<Articulos[]>(`${this.articulosApi}/date?fecha1=${fecha1}&fecha2=${fecha2}`);
+    return this.http.get<Articulos[]>(`${this.articulosApi}/date?fecha1=${fecha1}&fecha2=${fecha2}`, {headers: this.header.headers});
   }
 
   addArticulos(articulos:any):Observable<String>{
-    return this.http.post<String>(this.articulosApi, articulos, {headers: this.headerService.headers, responseType: 'text' as 'json'});
+    return this.http.post<String>(this.articulosApi, articulos, {headers: this.header.headers, responseType: 'text' as 'json'});
   }
 
   updateArticulos(id:number, articulos:Articulos):Observable<Articulos>{
-    return this.http.put<Articulos>(`${this.articulosApi}/${id}`, articulos, {headers: this.headerService.headers});
+    return this.http.put<Articulos>(`${this.articulosApi}/${id}`, articulos, {headers: this.header.headers});
   }
 
   deleteIdArticulos(id:number):Observable<void>{
-    return this.http.delete<void>(`${this.articulosApi}/${id}`, {headers: this.headerService.headers});
+    return this.http.delete<void>(`${this.articulosApi}/${id}`, {headers: this.header.headers});
   }
 }

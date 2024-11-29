@@ -22,21 +22,20 @@ export class AuthenticationService {
   }
 
   getItem(key:string){
-    const item = sessionStorage.getItem(key);
+    const token = sessionStorage.getItem(key);
 
-    if(item){
-      return JSON.parse(item);
+    if(token!=null){
+      return JSON.parse(token);
     } else {
       return null;
     }
-    //return item ? JSON.parse(item) : null;
   }
 
   removeItem(key:string):void{
     sessionStorage.removeItem(key);
   }
 
-  clear():void{
+  clear(){
     sessionStorage.clear();
   }
 }

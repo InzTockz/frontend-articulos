@@ -26,10 +26,6 @@ export class LoginComponent implements OnInit{
 
           this.authenticationService.setItem('token', token);
 
-          const jtoken = this.authenticationService.getItem('token');
-
-          //console.log(jtoken.token);
-
           this.router.navigate(['/']);
           this.toastr.success('Bienvenido ', 'Ingreso Correcto');
       }

@@ -10,8 +10,6 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class NavbarComponent implements OnInit{
 
-  userName:string = 'Fredy';
-
   constructor(private authenticationService:AuthenticationService, private router:Router, private toastr:ToastrService){}
 
   ngOnInit(): void {
@@ -19,10 +17,9 @@ export class NavbarComponent implements OnInit{
   }
 
   logout():void{
-    this.router.navigate(['/login']);
     this.authenticationService.clear();
+    this.router.navigate(['/login']);
     this.toastr.error('Session Finalizada');
-    console.log(this.authenticationService.getItem('token'));
   }
 
   isAdmin():boolean{
