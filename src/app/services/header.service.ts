@@ -7,21 +7,28 @@ import { AuthenticationService } from './authentication.service';
 })
 export class HeaderService {
 
-  private token: string = '';
-  public headers: HttpHeaders = new HttpHeaders;
-
   constructor(private authenticationService: AuthenticationService) {
 
+    /*
     if (this.authenticationService.getItem('token') != null) {
-      const token = this.authenticationService.getItem('token').token;
+      const token = this.authenticationService.getItem('token').token || '';
       this.headers = new HttpHeaders(
         {
           'Content-Type': 'application/json',
           'Authorization': `${token}`
         }
       );
-    }
+    }*/
 
+  }
+
+  getHeader(){
+    const token = this.authenticationService.getItem('token').token;
+    return new HttpHeaders(
+      {
+        'Authorization': `${token}`
+      }
+    )
   }
 
 
