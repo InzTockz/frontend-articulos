@@ -9,16 +9,54 @@
   display: flex;
   flex-direction: row;
   gap: 5px;
-
+  width: 90%;
+  justify-content: center;
 }
 
 .container-sub-main-2{
   display: flex;
   flex-direction: row;
   gap: 5px;
-
+  width: 90%;
+  justify-content: center;
 }
 
 .container-sub-main-3{
   display: flex;
+}
+
+.container-sub-main-4{
+  width: 100%;
+}
+
+.container-sub-main-5{
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  width: 90%;
+  justify-content: center;
+}
+
+.container-sub-main-6{
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  width: 90%;
+  justify-content: center;
+}
+
+.mat-form-style{
+  width: 50%;
+}
+
+.btn-color{
+  width: 25.5%;
+}
+
+.btn-etapa{
+  width: 35%;
+}
+
+.select-tiempoVida{
+  width: 25%;
 }

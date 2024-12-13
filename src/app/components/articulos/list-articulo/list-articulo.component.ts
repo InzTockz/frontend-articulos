@@ -24,7 +24,8 @@ export class ListArticuloComponent implements OnInit {
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     const dialogRef = this.dialog.open(DialogAddArticuloComponent, {
-      //width: '40%',
+      width: '100%',
+      //height: '50%',
       enterAnimationDuration,
       exitAnimationDuration
     });

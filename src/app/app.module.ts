@@ -44,6 +44,7 @@ import { DialogUpdateFamiliaComponent } from './components/familias/dialog-updat
 import { DialogAddSubfamiliaComponent } from './components/subfamilias/dialog-add-subfamilia/dialog-add-subfamilia.component';
 import { DialogUpdateSubfamiliaComponent } from './components/subfamilias/dialog-update-subfamilia/dialog-update-subfamilia.component';
 import { DialogUpdateArticulosComponent } from './components/articulos/dialog-update-articulos/dialog-update-articulos.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 /* Define el formato de la fecha con ceros iniciales
 export const MY_DATE_FORMATS = {
@@ -105,7 +106,8 @@ export const MY_DATE_FORMATS = {
     MatOptionModule,
     ReactiveFormsModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatCheckboxModule
   ],
   providers: [
     //{ provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS},

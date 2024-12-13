@@ -4,17 +4,17 @@
   <mat-dialog-content>
     <div class="container-main">
       <div class="container-sub-main-1">
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="mat-form-style">
           <mat-label>Descripcion</mat-label>
           <input matInput [(ngModel)]="descripcion" name="descripcion" required>
         </mat-form-field>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="mat-form-style">
           <mat-label>Presentacion</mat-label>
           <input matInput [(ngModel)]="presentacion" name="presentacion" required>
         </mat-form-field>
       </div>
       <div class="container-sub-main-2">
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="mat-form-style">
           <mat-label>Familia</mat-label>
           <mat-select [(ngModel)]="familiaId" name="familias" (valueChange)="getSubFamiliasId($event)" required>
             <mat-option *ngFor="let f of familias" [value]="f.id">
@@ -22,7 +22,7 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="mat-form-style">
           <mat-label>SubFamilia</mat-label>
           <mat-select [(ngModel)]="subFamiliaId" name="subFamilias" required>
             <mat-option *ngFor="let sb of subFamilias" [value]="sb.id">
@@ -31,13 +31,52 @@
           </mat-select>
         </mat-form-field>
       </div>
+      <div>
+        <mat-checkbox [(ngModel)]="hiddenMoreInformation" name="hiddenMoreInformation" (change)="cleanAfterHidden()">
+          Agregar mas informacion
+        </mat-checkbox>
+      </div>
+      <div class="container-sub-main-5" *ngIf="hiddenMoreInformation">
+        <mat-form-field appearance="outline" class="mat-form-style">
+          <mat-label>Etiquetas</mat-label>
+          <mat-select [(ngModel)]="etiquetaId" name="etiquetaDto">
+            <mat-option *ngFor="let e of etiquetas" [value]="e.id">{{e.descripcion}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="btn-color">
+          <mat-label>Color</mat-label>
+          <mat-select name="colorDto" [(ngModel)]="colorId">
+            <mat-option *ngFor="let c of colores" [value]="c.id">{{c.descripcion}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="btn-etapa">
+          <mat-label>Etapa</mat-label>
+          <input matInput [(ngModel)]="etapa" name="etapa">
+        </mat-form-field>
+      </div>
+      <div class="container-sub-main-6" *ngIf="hiddenMoreInformation">
+        <mat-form-field appearance="outline" class="mat-form-style">
+          <mat-label>Descripcion Etapa</mat-label>
+          <input matInput [(ngModel)]="descripcionEtapa" name="descripcionEtapa">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="mat-form-style">
+          <mat-label>Dosis</mat-label>
+          <input matInput [(ngModel)]="dosis" name="dosis">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="select-tiempoVida">
+          <mat-label>T. Vida</mat-label>
+          <mat-select name="tiempoVidaDto" [(ngModel)]="tiempoVidaId">
+            <mat-option *ngFor="let tp of tiempoVida" [value]="tp.id">{{tp.descripcion}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
       <div class="container-sub-main-3">
         <a mat-raised-button color="primary" (click)="addArticuloTemp()" [disabled]="!formValid.valid">Agregar</a>
       </div>
       <div class="container-sub-main-4">
         <table mat-table [dataSource]="contenido">
-          <ng-container matColumnDef="Descripcion">
-            <th mat-header-cell *matHeaderCellDef>Descripcion</th>
+          <ng-container matColumnDef="Nombre">
+            <th mat-header-cell *matHeaderCellDef>Nombre</th>
             <td mat-cell *matCellDef="let a">{{a.descripcion}}</td>
           </ng-container>
           <ng-container matColumnDef="Presentacion">
@@ -51,6 +90,30 @@
           <ng-container matColumnDef="SubFamilia">
             <th mat-header-cell *matHeaderCellDef>SubFamilia</th>
             <td mat-cell *matCellDef="let a">{{a.subFamiliasDto.descripcion}}</td>
+          </ng-container>
+          <ng-container matColumnDef="Cod. Etiqueta">
+            <th mat-header-cell *matHeaderCellDef>Etiqueta</th>
+            <td mat-cell *matCellDef="let a">{{a.etiquetaDto.codigo}}</td>
+          </ng-container>
+          <ng-container matColumnDef="Color Nucleo">
+            <th mat-header-cell *matHeaderCellDef>Color</th>
+            <td mat-cell *matCellDef="let a">{{a.colorDto.descripcion}}</td>
+          </ng-container>
+          <ng-container matColumnDef="Etapa">
+            <th mat-header-cell *matHeaderCellDef>Etapa</th>
+            <td mat-cell *matCellDef="let a">{{a.etapa}}</td>
+          </ng-container>
+          <ng-container matColumnDef="Descripcion">
+            <th mat-header-cell *matHeaderCellDef>Descripcion</th>
+            <td mat-cell *matCellDef="let a">{{a.descripcionEtapa}}</td>
+          </ng-container>
+          <ng-container matColumnDef="Dosis">
+            <th mat-header-cell *matHeaderCellDef>Dosis</th>
+            <td mat-cell *matCellDef="let a">{{a.dosis}}</td>
+          </ng-container>
+          <ng-container matColumnDef="T. Vida">
+            <th mat-header-cell *matHeaderCellDef>Vida</th>
+            <td mat-cell *matCellDef="let a">{{a.tiempoVidaDto.descripcion}}</td>
           </ng-container>
           <ng-container matColumnDef="Accion">
             <th mat-header-cell *matHeaderCellDef>Accion</th>
