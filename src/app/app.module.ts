@@ -9,7 +9,6 @@ import { UpdateFamiliaComponent } from './components/familias/update-familia/upd
 import { UpdateSubfamiliaComponent } from './components/subfamilias/update-subfamilia/update-subfamilia.component';
 import { ListSubfamiliaComponent } from './components/subfamilias/list-subfamilia/list-subfamilia.component';
 import { ListArticuloComponent } from './components/articulos/list-articulo/list-articulo.component';
-import { UpdateArticuloComponent } from './components/articulos/update-articulo/update-articulo.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HttpClientModule} from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
@@ -34,7 +33,6 @@ import { UserListComponent } from './components/user/user-list/user-list.compone
 import { FamiliasReporteComponent } from './components/reportes/familias-reporte/familias-reporte.component';
 import { SubfamiliasReporteComponent } from './components/reportes/subfamilias-reporte/subfamilias-reporte.component';
 import { ArticulosReporteComponent } from './components/reportes/articulos-reporte/articulos-reporte.component';
-import { ClientesSapComponent } from './components/clientes-sap/clientes-sap.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { CustomDateAdapter } from './utils/custom-date-adapter';
 import { DatePipe } from '@angular/common';
@@ -45,6 +43,10 @@ import { DialogAddSubfamiliaComponent } from './components/subfamilias/dialog-ad
 import { DialogUpdateSubfamiliaComponent } from './components/subfamilias/dialog-update-subfamilia/dialog-update-subfamilia.component';
 import { DialogUpdateArticulosComponent } from './components/articulos/dialog-update-articulos/dialog-update-articulos.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { ListClienteComponent } from './components/clientes-sap/list-cliente/list-cliente.component';
+import { DialogAddCredencialesComponent } from './components/clientes-sap/dialog-add-credenciales/dialog-add-credenciales.component';
+import { DialogEnviarCredencialesComponent } from './components/clientes-sap/dialog-enviar-credenciales/dialog-enviar-credenciales.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 /* Define el formato de la fecha con ceros iniciales
 export const MY_DATE_FORMATS = {
@@ -67,7 +69,6 @@ export const MY_DATE_FORMATS = {
     UpdateSubfamiliaComponent,
     ListSubfamiliaComponent,
     ListArticuloComponent,
-    UpdateArticuloComponent,
     NavbarComponent,
     RegisterComponent,
     LoginComponent,
@@ -76,13 +77,15 @@ export const MY_DATE_FORMATS = {
     FamiliasReporteComponent,
     SubfamiliasReporteComponent,
     ArticulosReporteComponent,
-    ClientesSapComponent,
     DialogAddArticuloComponent,
     DialogAddFamiliaComponent,
     DialogUpdateFamiliaComponent,
     DialogAddSubfamiliaComponent,
     DialogUpdateSubfamiliaComponent,
-    DialogUpdateArticulosComponent
+    DialogUpdateArticulosComponent,
+    ListClienteComponent,
+    DialogAddCredencialesComponent,
+    DialogEnviarCredencialesComponent
   ],
   imports: [
     BrowserModule,
@@ -107,7 +110,8 @@ export const MY_DATE_FORMATS = {
     ReactiveFormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatPaginatorModule
   ],
   providers: [
     //{ provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS},

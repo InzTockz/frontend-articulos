@@ -1,25 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Articulos } from 'src/app/models/articulos';
 import { ArticulosService } from 'src/app/services/articulos.service';
 import Swal from 'sweetalert2';
 import { DialogAddArticuloComponent } from '../dialog-add-articulo/dialog-add-articulo.component';
 import { DialogUpdateArticulosComponent } from '../dialog-update-articulos/dialog-update-articulos.component';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-list-articulo',
   templateUrl: './list-articulo.component.html',
   styleUrls: ['./list-articulo.component.css']
 })
-export class ListArticuloComponent implements OnInit {
+export class ListArticuloComponent implements OnInit, AfterViewInit {
 
-  articulos: Articulos[] = [];
+  articulos = new MatTableDataSource<Articulos>();
   columnasArticulos: string[] = ['Nro. Articulo', 'Descripcion', 'Presentacion', 'Familia', 'SubFamilia', 'Fec. Creacion', 'Accion'];
+
+  @ViewChild(MatPaginator) paginator!:MatPaginator;
 
   constructor(private articulosService: ArticulosService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getArticulos();
+  }
+
+  ngAfterViewInit(): void {
+    this.articulos.paginator = this.paginator;
   }
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
@@ -53,7 +61,7 @@ export class ListArticuloComponent implements OnInit {
 
   getArticulos(): void {
     this.articulosService.getAllArticulos().subscribe(
-      data => this.articulos = data
+      data => this.articulos.data = data
     )
   }
 

@@ -1,0 +1,21 @@
+<h1 mat-dialog-title style="text-align: center;">Agregar o Actualizar Credenciales</h1>
+<form (ngSubmit)="agregarCredenciales()" #formValid="ngForm">
+    <div mat-dialog-content>
+        <div class="container-main">
+            <div class="container-main">
+                <mat-form-field>
+                    <mat-label>Usuario Portal</mat-label>
+                    <input matInput [(ngModel)]="credenciales.usuario" name="usuario" required>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Clave Portal</mat-label>
+                    <input matInput [(ngModel)]="credenciales.clave" name="clave" required>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <div mat-dialog-actions align="center">
+        <button mat-raised-button mat-dialog-close>Cancelar</button>
+        <button type="submit" mat-raised-button color="primary" [disabled]="!formValid.valid">Aceptar</button>
+    </div>
+</form>

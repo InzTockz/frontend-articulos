@@ -1,6 +1,6 @@
 import { DialogRef } from '@angular/cdk/dialog';
 import { FamiliasService } from './../../../services/familias.service';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Subfamilias } from 'src/app/models/subfamilias';
 import { SubfamiliasService } from 'src/app/services/subfamilias.service';
 import Swal from 'sweetalert2';
@@ -8,21 +8,29 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogAddSubfamiliaComponent } from '../dialog-add-subfamilia/dialog-add-subfamilia.component';
 import { DialogUpdateFamiliaComponent } from '../../familias/dialog-update-familia/dialog-update-familia.component';
 import { DialogUpdateSubfamiliaComponent } from '../dialog-update-subfamilia/dialog-update-subfamilia.component';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-list-subfamilia',
   templateUrl: './list-subfamilia.component.html',
   styleUrls: ['./list-subfamilia.component.css']
 })
-export class ListSubfamiliaComponent implements OnInit{
+export class ListSubfamiliaComponent implements OnInit, AfterViewInit{
 
-  dataSource:Subfamilias[] = [];
+  dataSource = new MatTableDataSource<Subfamilias>();
   displayedColumns:string[] = ['Codigo', 'Descripcion', 'Familia', 'Accion'];
+
+  @ViewChild(MatPaginator) paginator!:MatPaginator;
 
   constructor(private subFamiliasService:SubfamiliasService, private familiaService:FamiliasService, public dialog:MatDialog){}
 
   ngOnInit(): void {
     this.getSubFamilias();
+  }
+
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
   }
 
   openDialog1(enterAnimationDuration:string, exitAnimationDuration:string):void{
@@ -57,7 +65,7 @@ export class ListSubfamiliaComponent implements OnInit{
   getSubFamilias():void{
     this.subFamiliasService.getAllSubFamilias().subscribe(
       data => {
-        this.dataSource = data;
+        this.dataSource.data = data;
       }
     )
   }

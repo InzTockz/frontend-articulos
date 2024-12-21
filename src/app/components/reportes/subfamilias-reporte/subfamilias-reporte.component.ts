@@ -6,7 +6,6 @@ import { FamiliasService } from 'src/app/services/familias.service';
 import { ReportesService } from 'src/app/services/reportes.service';
 import { SubfamiliasService } from 'src/app/services/subfamilias.service';
 import Swal from 'sweetalert2';
-import { ClientesSapComponent } from '../../clientes-sap/clientes-sap.component';
 
 @Component({
   selector: 'app-subfamilias-reporte',

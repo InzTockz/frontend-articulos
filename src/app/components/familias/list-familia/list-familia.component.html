@@ -4,8 +4,8 @@
   <mat-card-content>
     <button mat-raised-button color="primary" (click)="openDialog1('400ms', '400ms')" style="margin-right: 10px;">Nueva Familia</button>
     <br><br>
-    <div class="container">
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <div class="container" class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" >
         <ng-container matColumnDef="Codigo">
           <th mat-header-cell *matHeaderCellDef>Codigo</th>
           <td mat-cell *matCellDef="let element">{{element.codigo}}</td>
@@ -30,6 +30,7 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
+      <mat-paginator [pageSizeOptions]="[8, 10, 20]"></mat-paginator>
     </div>
   </mat-card-content>
 </mat-card>

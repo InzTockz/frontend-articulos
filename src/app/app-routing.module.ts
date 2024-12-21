@@ -5,7 +5,6 @@ import { UpdateFamiliaComponent } from './components/familias/update-familia/upd
 import { ListSubfamiliaComponent } from './components/subfamilias/list-subfamilia/list-subfamilia.component';
 import { UpdateSubfamiliaComponent } from './components/subfamilias/update-subfamilia/update-subfamilia.component';
 import { ListArticuloComponent } from './components/articulos/list-articulo/list-articulo.component';
-import { UpdateArticuloComponent } from './components/articulos/update-articulo/update-articulo.component';
 import { LoginComponent } from './components/authentication/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/authentication/register/register.component';
@@ -14,7 +13,7 @@ import { UserListComponent } from './components/user/user-list/user-list.compone
 import { FamiliasReporteComponent } from './components/reportes/familias-reporte/familias-reporte.component';
 import { SubfamiliasReporteComponent } from './components/reportes/subfamilias-reporte/subfamilias-reporte.component';
 import { ArticulosReporteComponent } from './components/reportes/articulos-reporte/articulos-reporte.component';
-import { ClientesSapComponent } from './components/clientes-sap/clientes-sap.component';
+import { ListClienteComponent } from './components/clientes-sap/list-cliente/list-cliente.component';
 
 const routes: Routes = [
 
@@ -31,13 +30,12 @@ const routes: Routes = [
   {path: 'subfamilias/update/:id', component: UpdateSubfamiliaComponent, canActivate:[authGuard]},
 
   {path: 'articulos', component: ListArticuloComponent, canActivate:[authGuard]},
-  {path: 'articulos/update/:id', component: UpdateArticuloComponent, canActivate:[authGuard]},
 
   {path: 'reportes/familias', component: FamiliasReporteComponent, canActivate:[authGuard]},
   {path: 'reportes/subfamilias', component: SubfamiliasReporteComponent, canActivate:[authGuard]},
   {path: 'reportes/articulos', component: ArticulosReporteComponent, canActivate:[authGuard]},
 
-  {path: 'clientes-sap', component: ClientesSapComponent, canActivate:[authGuard]}
+  {path: 'clientes-sap', component: ListClienteComponent, canActivate:[authGuard]}
 
 ];
 

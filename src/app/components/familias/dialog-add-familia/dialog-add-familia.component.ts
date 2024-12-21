@@ -22,15 +22,12 @@ export class DialogAddFamiliaComponent implements OnInit {
   registrarFamilia(){
     return this.familiaService.saveFamilias(this.familia).subscribe(
       response => {
+        this.dialogRef.close();
         Swal.fire({
           title: 'Registro correcto',
           text: 'Familia registrada de manera correcta',
           icon: 'success'
-        }).then(valid => {
-          if(valid.isConfirmed){
-            this.dialogRef.close();
-          }
-        })
+        });
       }
     )
   }

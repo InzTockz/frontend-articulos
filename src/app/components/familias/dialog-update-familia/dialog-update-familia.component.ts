@@ -35,15 +35,12 @@ export class DialogUpdateFamiliaComponent implements OnInit {
   actualizarFamilia(){
     return this.familiaService.updateFamilias(this.data, this.familia).subscribe(
       response => {
+        this.dialogRef.close();
         Swal.fire({
           //title: 'Registro correcto',
           text: 'Familia actualizada de manera correcta',
           icon: 'success'
-        }).then(valid => {
-          if(valid.isConfirmed){
-            this.dialogRef.close();
-          }
-        })
+        });
       }
     )
   }
