@@ -8,18 +8,6 @@ import { AuthenticationService } from './authentication.service';
 export class HeaderService {
 
   constructor(private authenticationService: AuthenticationService) {
-
-    /*
-    if (this.authenticationService.getItem('token') != null) {
-      const token = this.authenticationService.getItem('token').token || '';
-      this.headers = new HttpHeaders(
-        {
-          'Content-Type': 'application/json',
-          'Authorization': `${token}`
-        }
-      );
-    }*/
-
   }
 
   getHeader(){

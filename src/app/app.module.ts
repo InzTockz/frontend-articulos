@@ -10,7 +10,7 @@ import { UpdateSubfamiliaComponent } from './components/subfamilias/update-subfa
 import { ListSubfamiliaComponent } from './components/subfamilias/list-subfamilia/list-subfamilia.component';
 import { ListArticuloComponent } from './components/articulos/list-articulo/list-articulo.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { HttpClientModule} from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
@@ -47,20 +47,6 @@ import { ListClienteComponent } from './components/clientes-sap/list-cliente/lis
 import { DialogAddCredencialesComponent } from './components/clientes-sap/dialog-add-credenciales/dialog-add-credenciales.component';
 import { DialogEnviarCredencialesComponent } from './components/clientes-sap/dialog-enviar-credenciales/dialog-enviar-credenciales.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
-
-/* Define el formato de la fecha con ceros iniciales
-export const MY_DATE_FORMATS = {
-  parse: {
-    dateInput: 'DD/MM/YYYY',
-  },
-  display: {
-    dateInput: 'DD/MM/YYYY',
-    monthYearLabel: 'MM/YYYY',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MMMM YYYY',
-  },
-};*/
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -114,10 +100,10 @@ export const MY_DATE_FORMATS = {
     MatPaginatorModule
   ],
   providers: [
-    //{ provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS},
     DatePipe,
     { provide: MAT_DATE_LOCALE, useValue: 'es-ES'},
-    { provide: DateAdapter, useClass: CustomDateAdapter}
+    { provide: DateAdapter, useClass: CustomDateAdapter},
+    //{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

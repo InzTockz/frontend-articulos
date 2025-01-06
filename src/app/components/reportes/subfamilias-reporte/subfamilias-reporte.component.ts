@@ -72,6 +72,11 @@ export class SubfamiliasReporteComponent implements OnInit {
           link.download = 'Reporte SubFamilias';
 
           link.click();
+
+          Swal.fire({
+            title: 'Reporte Generado',
+            icon: 'success'
+          })
         });
     } else {
       this.reporteSubFamiliaService.reporteSubFamilias().subscribe(
@@ -81,6 +86,11 @@ export class SubfamiliasReporteComponent implements OnInit {
           link.href = url;
           link.download = "Reporte SubFamlias";
           link.click();
+
+          Swal.fire({
+            title: 'Reporte Generado',
+            icon: 'success'
+          })
         });
     };
   }

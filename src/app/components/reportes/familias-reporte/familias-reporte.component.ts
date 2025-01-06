@@ -40,7 +40,8 @@ export class FamiliasReporteComponent implements OnInit {
         a.click()
 
         Swal.fire({
-          title: 'Reporte Generado'
+          title: 'Reporte Generado',
+          icon: 'success'
         })
       }
     )
