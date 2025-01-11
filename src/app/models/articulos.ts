@@ -13,8 +13,8 @@ export class Articulos {
   codCorrelativo?:string;
   estado?:boolean;
   fecCreacion?:Date;
-  familiasDto?:Familias;
-  subFamiliasDto?:Subfamilias;
+  familiasDto:Familias = new Familias();
+  subFamiliasDto:Subfamilias = new Subfamilias();
   etiquetaDto?:Etiquetas;
   colorDto?:Color;
   etapa?:string;

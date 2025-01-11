@@ -144,6 +144,13 @@ export class DialogAddArticuloComponent implements OnInit {
                         this.table!.renderRows();
                         this.formValid.reset();
 
+                        this.etiquetaId = 40;
+                        this.colorId = 7;
+                        this.etapa = ''
+                        this.descripcionEtapa = '';
+                        this.dosis = '';
+                        this.tiempoVidaId = 7;
+
                       }) // FIN DE TIEMPO VIDA SERVICE
                   }) // FIN DE COLOR SERVICE
               }); //FIN DE ETIQUETA SERVICE

@@ -26,7 +26,6 @@ export class DialogAddCredencialesComponent implements OnInit {
       {
         this.credenciales.usuario = data.usuario_portal;
         this.credenciales.clave = data.clave_portal;
-        console.log(data.usuario_portal);
       });
   }
 

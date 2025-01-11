@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class DialogUpdateFamiliaComponent implements OnInit {
 
-  familia:Familias = new Familias;
+  familia:Familias = new Familias();
 
   constructor(public dialogRef: MatDialogRef<DialogUpdateFamiliaComponent>, private familiaService:FamiliasService,
     @Inject(MAT_DIALOG_DATA) public data:number

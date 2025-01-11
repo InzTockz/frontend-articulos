@@ -7,6 +7,8 @@ import { DialogAddArticuloComponent } from '../dialog-add-articulo/dialog-add-ar
 import { DialogUpdateArticulosComponent } from '../dialog-update-articulos/dialog-update-articulos.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { DialogInfoArticulosComponent } from '../dialog-info-articulos/dialog-info-articulos.component';
 
 @Component({
   selector: 'app-list-articulo',
@@ -20,10 +22,24 @@ export class ListArticuloComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator!:MatPaginator;
 
-  constructor(private articulosService: ArticulosService, public dialog: MatDialog) { }
+  constructor(private articulosService: ArticulosService, public dialog: MatDialog,
+    private authService:AuthenticationService
+  ) { }
 
   ngOnInit(): void {
     this.getArticulos();
+    this.articulos.filterPredicate = (data: Articulos, filter: string) => {
+      const formattedDate = new Date(data.fecCreacion!).toLocaleDateString('es-ES', {day: '2-digit', month: '2-digit', year: 'numeric'});
+      const dataStr = `
+      ${data.nroArticulo}
+      ${data.descripcion}
+      ${data.presentacion}
+      ${data.familiasDto?.descripcion}
+      ${data.subFamiliasDto?.descripcion}
+      ${formattedDate}
+      `.toLowerCase();
+      return dataStr.includes(filter);
+    }
   }
 
   ngAfterViewInit(): void {
@@ -59,6 +75,16 @@ export class ListArticuloComponent implements OnInit, AfterViewInit {
     );
   }
 
+  openDialog3(enterAnimationDuration:string, exitAnimationDuration:string, id:number):void{
+    const dialogRef = this.dialog.open(DialogInfoArticulosComponent, 
+      {
+        data: id,
+        enterAnimationDuration,
+        exitAnimationDuration
+      }
+    )
+  }
+
   getArticulos(): void {
     this.articulosService.getAllArticulos().subscribe(
       data => this.articulos.data = data
@@ -89,5 +115,15 @@ export class ListArticuloComponent implements OnInit, AfterViewInit {
         });
       }
     });
+  }
+
+  isAdmirOrOperator():boolean{
+    const token = this.authService.getItem('token').roleName;
+    return token === 'ADMIN' || token === 'OPERATOR' ? true:false;
+  }
+
+  filtro(event:Event){
+    const filtrarValor = (event.target as HTMLInputElement).value;
+    this.articulos.filter = filtrarValor.trim().toLowerCase();
   }
 }

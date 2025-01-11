@@ -47,6 +47,11 @@ import { ListClienteComponent } from './components/clientes-sap/list-cliente/lis
 import { DialogAddCredencialesComponent } from './components/clientes-sap/dialog-add-credenciales/dialog-add-credenciales.component';
 import { DialogEnviarCredencialesComponent } from './components/clientes-sap/dialog-enviar-credenciales/dialog-enviar-credenciales.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { DialogAddUserComponent } from './components/user/dialog-add-user/dialog-add-user.component';
+import { DialogUpdateUserComponent } from './components/user/dialog-update-user/dialog-update-user.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { DialogInfoArticulosComponent } from './components/articulos/dialog-info-articulos/dialog-info-articulos.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +76,10 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     DialogUpdateArticulosComponent,
     ListClienteComponent,
     DialogAddCredencialesComponent,
-    DialogEnviarCredencialesComponent
+    DialogEnviarCredencialesComponent,
+    DialogAddUserComponent,
+    DialogUpdateUserComponent,
+    DialogInfoArticulosComponent
   ],
   imports: [
     BrowserModule,
@@ -97,7 +105,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatTooltipModule
   ],
   providers: [
     DatePipe,

@@ -2,10 +2,12 @@
 
 <mat-card class="container-card">
   <mat-card-content>
-    <button mat-raised-button color="primary" (click)="openDialog1('400ms', '400ms')">Registrar subfamilia</button>
-    <br><br>
-    <div class="container" class="mat-elevation-z8">
-      <table mat-table [dataSource]="dataSource" >
+    <a *ngIf="isAdmirOrOperator()" class="move-btn" matTooltip="Nueva SubFamilia" matTooltipShowDelay="800"
+      matTooltipPosition="right" (click)="openDialog1('400ms', '400ms')" style="margin-left: 10px;"><img
+        src="assets/iconos/nuevoRegistro.png"></a>
+    <br>
+    <div class="container" class="mat-elevation-z8 table-users">
+      <table mat-table [dataSource]="dataSource">
         <ng-container matColumnDef="Codigo">
           <th mat-header-cell *matHeaderCellDef>Codigo</th>
           <td mat-cell *matCellDef="let sb">{{sb.codigo}}</td>
@@ -20,9 +22,13 @@
         </ng-container>
         <ng-container matColumnDef="Accion">
           <th mat-header-cell *matHeaderCellDef>Accion</th>
-          <td mat-cell *matCellDef="let sb">
-            <button mat-raised-button color="primary" (click)="openDialog2('400ms', '400ms', sb.id)">Actualizar</button> |
-            <button mat-raised-button color="warn" (click)="deleteSubFamilias(sb.id)" >Eliminar</button>
+          <td mat-cell *matCellDef="let sb" style="display: flex; gap: 10px;">
+            <a *ngIf="isAdmirOrOperator()" matTooltip="Modificar SubFamilia" matTooltipShowDelay="800"
+              matTooltipPosition="left" class="move-btn" (click)="openDialog2('400ms', '400ms', sb.id)"><img
+                src="assets/iconos/modificar.png"></a>
+            <a *ngIf="isAdmirOrOperator()" matTooltip="Eliminar SubFamilia" matTooltipShowDelay="800"
+              matTooltipPosition="left" class="move-btn" (click)="deleteSubFamilias(sb.id)"><img
+                src="assets/iconos/basura.png"></a>
           </td>
         </ng-container>
 

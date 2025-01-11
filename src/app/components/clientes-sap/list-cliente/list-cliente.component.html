@@ -1,10 +1,11 @@
 <app-navbar></app-navbar>
 <mat-card class="container-card">
     <mat-card-content>
-        <a mat-raised-button color="primary" (click)="revalidarClientes()">Actualizar Clientes</a>
-        <br><br>
-        <div class="container" class="mat-elevation-z8">
-            <table mat-table [dataSource]="clientes" >
+        <a class="move-btn" matTooltip="Revalidar Clientes" [matTooltipShowDelay]="800" [matTooltipPosition]="'right'" color="primary" (click)="revalidarClientes()"
+            style="margin-left: 10px;"><img src="assets/iconos/actualizar.png"></a>
+        <br>
+        <div class="container" class="mat-elevation-z8 table-clientes">
+            <table mat-table [dataSource]="clientes">
                 <ng-container matColumnDef="Ruc">
                     <th mat-header-cell *matHeaderCellDef>Ruc</th>
                     <td mat-cell *matCellDef="let c">{{c.ruc}}</td>
@@ -35,9 +36,13 @@
                 </ng-container>
                 <ng-container matColumnDef="Accion">
                     <th mat-header-cell *matHeaderCellDef>Accion</th>
-                    <td mat-cell *matCellDef="let c" style="display: flex; flex-direction: row; gap: 5px;">
-                        <button mat-raised-button color="primary" (click)="openDialog('250ms', '250ms', c.id_cliente)">Credenciales</button>
-            <button mat-raised-button color="warn" (click)="openDialog2('250ms', '250ms', c.id_cliente)">Enviar</button>
+                    <td mat-cell *matCellDef="let c" style="display: flex; flex-direction: row; gap: 10px;">
+                        <a matTooltip="Modificar credenciales" [matTooltipShowDelay]="800" [matTooltipPosition]="'left'"
+                            class="move-btn" color="primary" (click)="openDialog('250ms', '250ms', c.id_cliente)"><img
+                                src="assets/iconos/credenciales.png"></a>
+                        <a matTooltip="Enviar credenciales" [matTooltipShowDelay]="800" [matTooltipPosition]="'left'"
+                            class="move-btn" color="warn" (click)="openDialog2('250ms', '250ms', c.id_cliente)"><img
+                                src="assets/iconos/enviar.png"></a>
                     </td>
                 </ng-container>
 

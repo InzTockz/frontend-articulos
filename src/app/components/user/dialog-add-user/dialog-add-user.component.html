@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>Registar Articulo</h1>
+<form (ngSubmit)="addUser()" #formValid="ngForm">
+    <div mat-dialog-content>
+        <div class="container-main">
+            <mat-form-field>
+                <mat-label>Nombre</mat-label>
+                <input matInput [(ngModel)]="user.name" name="name" required>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Apellido</mat-label>
+                <input matInput [(ngModel)]="user.lastName" name="lastName" required>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Usuario</mat-label>
+                <input matInput [(ngModel)]="user.username" name="username" required>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Contraseña</mat-label>
+                <input type="password" matInput [(ngModel)]="user.password" name="password" required>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Rol</mat-label>
+                <!--<input matInput [(ngModel)]="user.role" name="role" required>-->
+                <mat-select [(ngModel)]="indice" name="rol" required>
+                    <mat-option value="1">Administrador</mat-option>
+                    <mat-option value="2">Usuario</mat-option>
+                    <mat-option value="3">Operador</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div mat-dialog-actions align="center">
+        <button mat-raised-button mat-dialog-close>Cerrar</button>
+        <button type="submit" mat-raised-button color="primary" [disabled]="!formValid.valid">Registrar</button>
+    </div>
+</form>

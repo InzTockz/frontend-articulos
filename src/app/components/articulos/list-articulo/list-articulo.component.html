@@ -1,10 +1,22 @@
 <app-navbar></app-navbar>
+
 <mat-card class="container-card">
   <mat-card-content>
-    <button mat-raised-button style="margin-right: 10px;" color="primary" (click)="openDialog('400ms', '400ms')">Registrar</button>
-    <br><br>
-    <div class="container" class="mat-elevation-z8">
-      <table mat-table [dataSource]="articulos" >
+    <div style="display: flex; flex-direction: row; justify-content: space-between;">
+      <div style="margin-top: 20px;">
+        <a *ngIf="isAdmirOrOperator()" class="move-btn" matTooltip="Nuevo Articulo" matTooltipShowDelay="800"
+          matTooltipPosition="right" style="margin-left: 10px;" (click)="openDialog('400ms', '400ms')"><img
+            src="assets/iconos/nuevoRegistro.png"></a>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Buscar</mat-label>
+          <input matInput (keyup)="filtro($event)" #input>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="container" class="mat-elevation-z8 table-users">
+      <table mat-table [dataSource]="articulos">
         <ng-container matColumnDef="Nro. Articulo">
           <th mat-header-cell *matHeaderCellDef>Nro. Articulo</th>
           <td mat-cell *matCellDef="let a">{{a.nroArticulo}}</td>
@@ -27,13 +39,17 @@
         </ng-container>
         <ng-container matColumnDef="Fec. Creacion">
           <th mat-header-cell *matHeaderCellDef>Fec. Creacion</th>
-          <td mat-cell *matCellDef="let a">{{a.fecCreacion | date: "dd-MM-yyyy"}}</td>
+          <td mat-cell *matCellDef="let a">{{a.fecCreacion | date: "dd/MM/yyyy"}}</td>
         </ng-container>
         <ng-container matColumnDef="Accion">
           <th mat-header-cell *matHeaderCellDef>Accion</th>
-          <td mat-cell *matCellDef="let a">
-            <button mat-raised-button color="primary" (click)="openDialog2('400ms', '400ms' , a.id)">Actualizar</button> |
-            <button mat-raised-button color="warn" (click)="deleteArticulos(a.id)" >Eliminar</button>
+          <td mat-cell *matCellDef="let a" style="display: flex; gap: 10px;">
+            <a *ngIf="isAdmirOrOperator()" class="move-btn" matTooltip="Actualizar" matTooltipShowDelay="800"
+              matTooltipPosition="left" (click)="openDialog2('400ms', '400ms' , a.id)"><img
+                src="assets/iconos/modificar.png"></a>
+            <a class="move-btn" (click)="openDialog3('400ms', '400ms', a.id)" ><img src="assets/iconos/informacion.png"></a>
+            <a *ngIf="isAdmirOrOperator()" class="move-btn" matTooltip="Eliminar" matTooltipShowDelay="800"
+              matTooltipPosition="left" (click)="deleteArticulos(a.id)"><img src="assets/iconos/basura.png"></a>
           </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="columnasArticulos"></tr>
@@ -43,4 +59,3 @@
     </div>
   </mat-card-content>
 </mat-card>
-

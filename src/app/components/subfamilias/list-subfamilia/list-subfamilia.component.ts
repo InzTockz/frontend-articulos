@@ -10,6 +10,7 @@ import { DialogUpdateFamiliaComponent } from '../../familias/dialog-update-famil
 import { DialogUpdateSubfamiliaComponent } from '../dialog-update-subfamilia/dialog-update-subfamilia.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-list-subfamilia',
@@ -23,7 +24,9 @@ export class ListSubfamiliaComponent implements OnInit, AfterViewInit{
 
   @ViewChild(MatPaginator) paginator!:MatPaginator;
 
-  constructor(private subFamiliasService:SubfamiliasService, private familiaService:FamiliasService, public dialog:MatDialog){}
+  constructor(private subFamiliasService:SubfamiliasService, private familiaService:FamiliasService, public dialog:MatDialog,
+    private authService:AuthenticationService
+  ){}
 
   ngOnInit(): void {
     this.getSubFamilias();
@@ -93,6 +96,10 @@ export class ListSubfamiliaComponent implements OnInit, AfterViewInit{
         });
       }
     });
+  }
 
+  isAdmirOrOperator():boolean{
+    const token = this.authService.getItem('token').roleName;
+    return token === 'ADMIN' || token === 'OPERATOR' ? true:false;
   }
 }

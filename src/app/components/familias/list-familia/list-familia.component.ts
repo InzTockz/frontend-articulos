@@ -8,6 +8,7 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { DialogUpdateFamiliaComponent } from '../dialog-update-familia/dialog-update-familia.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-list-familia',
@@ -21,7 +22,9 @@ export class ListFamiliaComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator!:MatPaginator;
 
-  constructor(private familiasService: FamiliasService, private router:Router, public dialog:MatDialog) {
+  constructor(private familiasService: FamiliasService, private router:Router, public dialog:MatDialog,
+    private authService:AuthenticationService
+  ) {
   }
 
   ngOnInit(): void {
@@ -93,6 +96,11 @@ export class ListFamiliaComponent implements OnInit, AfterViewInit {
         });
       }
     });
+  }
+
+  isAdmirOrOperator():boolean{
+    const token = this.authService.getItem('token').roleName;
+    return token === 'ADMIN' || token === 'OPERATOR' ? true:false;
   }
 
 }

@@ -7,3 +7,29 @@
     margin-top: 5%;
   }
   
+  /*ESTILO PARA LOS BOTONES */
+.table-clientes {
+  position: relative; /* Asegura que los elementos tengan un contexto de apilamiento */
+  border-collapse: collapse; /* Si lo deseas para diseño */
+  overflow: visible; /* Permite que los elementos sobresalgan */
+}
+
+/* Asegura que las celdas no recorten contenido */
+.table-clientes td {
+  position: relative; /* Crea un contexto para que la imagen sobresalga */
+  overflow: visible; /* Importante para que la imagen se vea fuera de la celda */
+}
+
+/* Estilo para la imagen */
+.move-btn img {
+  position: relative; /* Necesario para usar z-index */
+  z-index: 10;        /* Coloca la imagen por encima de otros elementos */
+  transition: transform 0.3s ease; /* Suaviza el movimiento */
+  cursor: pointer;    /* Cambia a mano al pasar el mouse */
+  width: 38px;
+}
+
+/* Efecto al pasar el mouse */
+.move-btn:hover img {
+  transform: scale(1.2); /* Mueve la imagen hacia arriba */
+}

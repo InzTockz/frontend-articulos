@@ -4,7 +4,7 @@
     <mat-button-toggle routerLink="/familias" class="mat-button-design" routerLinkActive="mat-button-toggle-checked">Familias</mat-button-toggle>
     <mat-button-toggle routerLink="/subfamilias" class="mat-button-design" routerLinkActive="mat-button-toggle-checked">SubFamilias</mat-button-toggle>
     <mat-button-toggle routerLink="/articulos" class="mat-button-design" routerLinkActive="mat-button-toggle-checked">Articulos</mat-button-toggle>
-    <mat-button-toggle class="mat-button-design" routerLink="/clientes-sap" routerLinkActive="mat-button-toggle-checked">Clientes SAP</mat-button-toggle>
+    <mat-button-toggle class="mat-button-design" routerLink="/clientes-sap" routerLinkActive="mat-button-toggle-checked" *ngIf="isAdmin()">Clientes SAP</mat-button-toggle>
     <mat-button-toggle [matMenuTriggerFor]="menuReportes" class="mat-button-design" routerLinkActive="mat-button-toggle-checked">Reportes</mat-button-toggle>
     <mat-menu #menuReportes="matMenu" xPosition="after">
       <button mat-menu-item routerLink="/reportes/familias" routerLinkActive="mat-button-toggle-checked">Familias</button>
