@@ -1,4 +1,4 @@
-import { NgModule, Pipe } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,7 +10,7 @@ import { UpdateSubfamiliaComponent } from './components/subfamilias/update-subfa
 import { ListSubfamiliaComponent } from './components/subfamilias/list-subfamilia/list-subfamilia.component';
 import { ListArticuloComponent } from './components/articulos/list-articulo/list-articulo.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import { HttpClientModule} from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
@@ -51,6 +51,7 @@ import { DialogAddUserComponent } from './components/user/dialog-add-user/dialog
 import { DialogUpdateUserComponent } from './components/user/dialog-update-user/dialog-update-user.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { DialogInfoArticulosComponent } from './components/articulos/dialog-info-articulos/dialog-info-articulos.component';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 @NgModule({
   declarations: [
@@ -106,7 +107,8 @@ import { DialogInfoArticulosComponent } from './components/articulos/dialog-info
     MatNativeDateModule,
     MatCheckboxModule,
     MatPaginatorModule,
-    MatTooltipModule
+    MatTooltipModule,
+    SlickCarouselModule
   ],
   providers: [
     DatePipe,
