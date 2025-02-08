@@ -63,6 +63,7 @@ export class ListArticuloComponent implements OnInit, AfterViewInit {
 
   openDialog2(enterAnimationDuration: string, exitAnimationDuration: string, id:number): void {
     const dialogRef = this.dialog.open(DialogUpdateArticulosComponent, {
+      width: '100%',
       data: id,
       enterAnimationDuration,
       exitAnimationDuration
@@ -78,6 +79,7 @@ export class ListArticuloComponent implements OnInit, AfterViewInit {
   openDialog3(enterAnimationDuration:string, exitAnimationDuration:string, id:number):void{
     const dialogRef = this.dialog.open(DialogInfoArticulosComponent, 
       {
+        width: '100%',
         data: id,
         enterAnimationDuration,
         exitAnimationDuration

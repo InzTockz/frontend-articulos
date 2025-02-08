@@ -139,7 +139,7 @@ export class DialogAddArticuloComponent implements OnInit {
                             descripcion: objTiempoVida
                           }
                         }
-                        console.log(articulo)
+
                         this.contenido.push(articulo);
                         this.table!.renderRows();
                         this.formValid.reset();
@@ -161,6 +161,20 @@ export class DialogAddArticuloComponent implements OnInit {
   deleteArticuloTemp(index: number): void {
     this.contenido.splice(index, 1);
     this.table!.renderRows();
+  }
+
+  copyArticuloTemp(articuloTemp:any):void{
+    this.hiddenMoreInformation = true;
+    this.descripcion = articuloTemp.descripcion;
+    this.presentacion = articuloTemp.presentacion;
+    this.familiaId = articuloTemp.familiasDto.id;
+    this.subFamiliaId = articuloTemp.subFamiliasDto.id;
+    this.etiquetaId = articuloTemp.etiquetaDto.id;
+    this.colorId = articuloTemp.colorDto.id;
+    this.etapa = articuloTemp.etapa;
+    this.descripcionEtapa = articuloTemp.descripcionEtapa;
+    this.dosis = articuloTemp.dosis;
+    this.tiempoVidaId = articuloTemp.tiempoVidaDto.id;
   }
 
   closeDialog() {

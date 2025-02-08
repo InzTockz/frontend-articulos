@@ -6,7 +6,6 @@ import { SubfamiliasService } from 'src/app/services/subfamilias.service';
 import Swal from 'sweetalert2';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddSubfamiliaComponent } from '../dialog-add-subfamilia/dialog-add-subfamilia.component';
-import { DialogUpdateFamiliaComponent } from '../../familias/dialog-update-familia/dialog-update-familia.component';
 import { DialogUpdateSubfamiliaComponent } from '../dialog-update-subfamilia/dialog-update-subfamilia.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -39,6 +38,7 @@ export class ListSubfamiliaComponent implements OnInit, AfterViewInit{
   openDialog1(enterAnimationDuration:string, exitAnimationDuration:string):void{
     const dialogRef = this.dialog.open(DialogAddSubfamiliaComponent,
       {
+        width: '30%',
         enterAnimationDuration,
         exitAnimationDuration
       }
@@ -53,6 +53,7 @@ export class ListSubfamiliaComponent implements OnInit, AfterViewInit{
   openDialog2(enterAnimationDuration:string, exitAnimationDuration:string, id:number):void{
     const dialogRef = this.dialog.open(DialogUpdateSubfamiliaComponent,
       {
+        width: '30%',
         data: id,
         enterAnimationDuration,
         exitAnimationDuration

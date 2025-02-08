@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Users } from '../models/users';
 import { HeaderService } from './header.service';
+import { Login } from '../models/login';
 
 @Injectable({
   providedIn: 'root'
@@ -14,23 +15,26 @@ export class UsersService {
   constructor(private http:HttpClient, private hs:HeaderService) { }
 
   register(users:Users):Observable<Users>{
-    return this.http.post<Users>(this.apiUsers, users, {headers: this.hs.getHeader()});
+    return this.http.post<Users>(`${this.apiUsers}/registrar`, users, {headers: this.hs.getHeader()});
   }
 
   getUserId(id:number):Observable<Users>{
-    return this.http.get<Users>(`${this.apiUsers}/${id}`, {headers: this.hs.getHeader()});
+    return this.http.get<Users>(`${this.apiUsers}/buscar/${id}`, {headers: this.hs.getHeader()});
   }
 
   getAllUsers():Observable<Users[]>{
-    return this.http.get<Users[]>(this.apiUsers, {headers: this.hs.getHeader()});
+    return this.http.get<Users[]>(`${this.apiUsers}/listar`, {headers: this.hs.getHeader()});
   }
 
   updateUsers(id:number, users:Users):Observable<Users>{
-    return this.http.put<Users>(`${this.apiUsers}/${id}`, users, {headers: this.hs.getHeader()});
+    return this.http.put<Users>(`${this.apiUsers}/actualizar/${id}`, users, {headers: this.hs.getHeader()});
   }
 
   deleteUsers(id:number):Observable<void>{
-    return this.http.delete<void>(`${this.apiUsers}/${id}`, {headers: this.hs.getHeader()});
+    return this.http.delete<void>(`${this.apiUsers}/eliminar/${id}`, {headers: this.hs.getHeader()});
   }
 
+  findUserByUsername(login:Login):Observable<Users>{
+    return this.http.get<Users>(`${this.apiUsers}/username/${login.username}`);
+  }
 }

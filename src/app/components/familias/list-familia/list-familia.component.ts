@@ -39,6 +39,7 @@ export class ListFamiliaComponent implements OnInit, AfterViewInit {
   openDialog1(enterAnimationDuration:string, exitAnimationDuration:string):void{
     const dialogRef = this.dialog.open(DialogAddFamiliaComponent, 
       {
+        width: '28%',
         enterAnimationDuration,
         exitAnimationDuration
       });
@@ -53,6 +54,7 @@ export class ListFamiliaComponent implements OnInit, AfterViewInit {
   openDialog2(enterAnimationDuration:string, exitAnimationDuration:string, id:number):void{
     const dialogRef = this.dialog.open(DialogUpdateFamiliaComponent, 
       {
+        width: '28%',
         data: id,
         enterAnimationDuration,
         exitAnimationDuration
@@ -81,7 +83,7 @@ export class ListFamiliaComponent implements OnInit, AfterViewInit {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Si, eliminalo!",
+      confirmButtonText: "Si, eliminalo",
       cancelButtonText: "Cancelar"
     }).then((result) => {
       if (result.isConfirmed) {
@@ -90,8 +92,7 @@ export class ListFamiliaComponent implements OnInit, AfterViewInit {
         );
 
         Swal.fire({
-          title: "Deleted!",
-          text: "Your file has been deleted.",
+          text: "La familia fue eliminada",
           icon: "success"
         });
       }

@@ -2,16 +2,16 @@
 <form (ngSubmit)="actualizarFamilia()" #formValid="ngForm">
     <div mat-dialog-content>
         <div class="container-main">
-            <div class="container-main">
-                <mat-form-field>
+            <div class="container-sub-main-1">
+                <mat-form-field appearance="outline" class="mat-form-style">
                     <mat-label>Codigo</mat-label>
                     <input matInput [(ngModel)]="familia.codigo" name="codigo" required>
                 </mat-form-field>
-                <mat-form-field>
+                <mat-form-field appearance="outline" class="mat-form-style">
                     <mat-label>Descripcion</mat-label>
                     <input matInput [(ngModel)]="familia.descripcion" name="descripcion" required>
                 </mat-form-field>
-                <mat-form-field>
+                <mat-form-field appearance="outline" class="mat-form-style">
                     <mat-label>Nomenclatura</mat-label>
                     <input matInput [(ngModel)]="familia.pronombre" name="pronombre" required>
                 </mat-form-field>

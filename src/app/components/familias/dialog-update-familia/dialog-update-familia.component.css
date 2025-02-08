@@ -1,4 +1,15 @@
 .container-main{
     display: flex;
     flex-direction: column;
+    justify-items: center;
+}
+
+.container-sub-main-1{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+}
+
+.mat-form-style{
+    width: 100%;
 }

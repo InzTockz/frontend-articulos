@@ -30,7 +30,7 @@ export class ArticulosService {
   }
 
   updateArticulos(id:number, articulos:Articulos):Observable<Articulos>{
-    return this.http.put<Articulos>(`${this.articulosApi}/buscar/${id}`, articulos, {headers: this.hs.getHeader()});
+    return this.http.put<Articulos>(`${this.articulosApi}/actualizar/${id}`, articulos, {headers: this.hs.getHeader()});
   }
 
   deleteIdArticulos(id:number):Observable<void>{

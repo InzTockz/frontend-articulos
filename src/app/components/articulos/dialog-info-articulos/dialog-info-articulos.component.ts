@@ -28,7 +28,7 @@ export class DialogInfoArticulosComponent implements OnInit {
     this.articuloService.getIdArticulos(this.data).subscribe(
       data => {
         this.articulos = data;
-        this.etiquetas = data.etiquetaDto?.codigo === '00' ? '' : data.etiquetaDto?.codigo;
+        this.etiquetas = data.etiquetaDto?.codigo === '00' ? '' : data.etiquetaDto?.descripcion;
         this.color = data.colorDto!.codigo === '00' ? '': data.colorDto!.descripcion;
         this.tiempoVida = data.tiempoVidaDto!.codigo === '00' ? '' : data.tiempoVidaDto!.descripcion;
       }

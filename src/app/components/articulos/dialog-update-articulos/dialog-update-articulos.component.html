@@ -1,20 +1,20 @@
-<h1 mat-dialog-title>Registrar Articulos</h1>
+<h1 mat-dialog-title>Actualizar Articulo</h1>
 
 <form (ngSubmit)="actualizarArticulos()" #formValid="ngForm">
   <mat-dialog-content>
     <div class="container-main">
       <div class="container-sub-main-1">
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="mat-form-style">
           <mat-label>Descripcion</mat-label>
           <input matInput [(ngModel)]="descripcion" name="descripcion" required>
         </mat-form-field>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="mat-form-style">
           <mat-label>Presentacion</mat-label>
           <input matInput [(ngModel)]="presentacion" name="presentacion" required>
         </mat-form-field>
       </div>
       <div class="container-sub-main-2">
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="mat-form-style">
           <mat-label>Familia</mat-label>
           <mat-select [(ngModel)]="familiaId" name="familias" (valueChange)="getSubFamiliasId($event)" required>
             <mat-option *ngFor="let f of familias" [value]="f.id">
@@ -22,7 +22,7 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="mat-form-style">
           <mat-label>SubFamilia</mat-label>
           <mat-select [(ngModel)]="subFamiliaId" name="subFamilias" required>
             <mat-option *ngFor="let sb of subFamilias" [value]="sb.id">
@@ -31,10 +31,46 @@
           </mat-select>
         </mat-form-field>
       </div>
+      <div class="container-sub-main-5">
+        <mat-form-field appearance="outline" class="mat-form-style">
+            <mat-label>Etiquetas</mat-label>
+            <mat-select [(ngModel)]="etiquetaId" name="etiquetdaDto">
+              <mat-option *ngFor="let e of etiquetas" [value]="e.id">
+                {{e.descripcion}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="btn-color">
+            <mat-label>Color</mat-label>
+            <mat-select [(ngModel)]="colorId" name="colorDto">
+              <mat-option *ngFor="let c of color" [value]="c.id">{{c.descripcion}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="btn-etapa">
+            <mat-label>Etapa</mat-label>
+            <input matInput [(ngModel)]="etapa" name="etapa">
+        </mat-form-field>
+    </div>
+    <div class="container-sub-main-6">
+        <mat-form-field appearance="outline" class="mat-form-style">
+            <mat-label>Descripcion Etapa</mat-label>
+            <input matInput [(ngModel)]="descripcionEtapa" name="descripcionEtapa">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="mat-form-style">
+            <mat-label>Dosis</mat-label>
+            <input matInput [(ngModel)]="dosis" name="dosis">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="select-tiempoVida">
+            <mat-label>T. Vida</mat-label>
+            <mat-select [(ngModel)]="tiempoVidaId" name="tiempoVidaDto">
+              <mat-option *ngFor="let tp of tiempoVida" [value]="tp.id">{{tp.descripcion}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
     </div>
   </mat-dialog-content>
   <mat-dialog-actions align="center">
     <button mat-raised-button mat-dialog-close>Cerrar</button>
-    <button mat-raised-button color="primary" type="submit">Registrar</button>
+    <button mat-raised-button color="primary" type="submit">Guardar</button>
   </mat-dialog-actions>
 </form>
