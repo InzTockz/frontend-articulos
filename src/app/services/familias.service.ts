@@ -9,7 +9,8 @@ import { HeaderService } from './header.service';
 })
 export class FamiliasService {
 
-  private familiasApi:string = 'http://localhost:8080/familias';
+  //private familiasApi:string = 'http://localhost:8080/familias';
+  private familiasApi:string = 'http://192.168.1.12:8011/ArticulosBatt/familias';
 
   constructor(private http:HttpClient, private header:HeaderService, private hs:HeaderService) { }
 

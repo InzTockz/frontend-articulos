@@ -11,7 +11,9 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AuthenticationService {
 
-  private apiAuth:string = 'http://localhost:8080/security';
+  //private apiAuth:string = 'http://localhost:8080/security';
+  private apiAuth:string = 'http://192.168.1.12:8011/ArticulosBatt/security';
+
 
   constructor(private http:HttpClient, private router:Router, private toastr:ToastrService) { }
 

@@ -9,7 +9,8 @@ import { HeaderService } from './header.service';
 })
 export class ColorService {
 
-  private apiColor:string = "http://localhost:8080/api/color";
+  //private apiColor:string = "http://localhost:8080/api/color";
+  private apiColor:string = "http://192.168.1.12:8011/ArticulosBatt/api/color";
 
   constructor(private http:HttpClient, private headerService:HeaderService) { }
 

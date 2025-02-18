@@ -8,7 +8,8 @@ import { HeaderService } from './header.service';
 })
 export class ReportesService {
 
-  private reportesApi = "http://localhost:8080/api/reportes"
+  //private reportesApi = "http://localhost:8080/api/reportes";
+  private reportesApi = "http://192.168.1.12:8011/ArticulosBatt/api/reportes";
 
   constructor(private http:HttpClient, private hs:HeaderService) { }
 

@@ -10,7 +10,8 @@ import { HeaderService } from './header.service';
 })
 export class ClienteService {
 
-  private apiCliente:string = 'http://localhost:8080/api/clientes'
+  //private apiCliente:string = 'http://localhost:8080/api/clientes'
+  private apiCliente:string = 'http://192.168.1.12:8011/ArticulosBatt/api/clientes';
 
   constructor(private http:HttpClient, private hs:HeaderService) { }
 
@@ -24,6 +25,10 @@ export class ClienteService {
 
   revalidarCredenciales():Observable<any>{
     return this.http.post<any>(`${this.apiCliente}/revalidarCredenciales`, null, {headers: this.hs.getHeader()})
+  }
+
+  revalidarAccesosPortal():Observable<any>{
+    return this.http.post<any>(`${this.apiCliente}/revalidarAccesosPortal`, null, {headers: this.hs.getHeader()});
   }
 
   addCredenciales(id:number, credenciales:CredencialesCliente):Observable<any>{

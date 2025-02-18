@@ -1,9 +1,20 @@
 <app-navbar></app-navbar>
 <mat-card class="container-card">
     <mat-card-content>
-        <a class="move-btn" matTooltip="Revalidar Clientes" [matTooltipShowDelay]="800" [matTooltipPosition]="'right'" color="primary" (click)="revalidarClientes()"
-            style="margin-left: 10px;"><img src="assets/iconos/actualizar.png"></a>
-        <br>
+        <div style="display: flex; flex-direction: row; justify-content: space-between; justify-items: center;">
+            <div style="display: flex; flex-direction: row; justify-items: center; align-items: center; gap: 30px;">
+                <a class="move-btn" matTooltip="Revalidar Clientes" [matTooltipShowDelay]="500" (click)="revalidarClientes()"
+                style=""><img src="assets/iconos/actualizar.png"></a>
+            <a class="move-btn" matTooltip="Revalidar Accesos Portal" [matTooltipShowDelay]="500" (click)="revalidarAccesosPortal()">
+                <img src="assets/iconos/credencialesPortal.png"></a>
+            </div>
+            <div>
+                <mat-form-field appearance="outline">
+                  <mat-label>Buscar</mat-label>
+                  <input matInput (keyup)="filtro($event)" #input>
+                </mat-form-field>
+              </div>
+        </div>
         <div class="container" class="mat-elevation-z8 table-clientes">
             <table mat-table [dataSource]="clientes">
                 <ng-container matColumnDef="Ruc">
@@ -28,7 +39,7 @@
                 </ng-container>
                 <ng-container matColumnDef="Id Vendedor">
                     <th mat-header-cell *matHeaderCellDef>Id Vendedor</th>
-                    <td mat-cell *matCellDef="let c">{{c.idVendedor.id_vendedor}}</td>
+                    <td mat-cell *matCellDef="let c">{{c.idVendedor.codigo}}</td>
                 </ng-container>
                 <ng-container matColumnDef="Nombres">
                     <th mat-header-cell *matHeaderCellDef>Nombres</th>
@@ -49,7 +60,7 @@
                 <tr mat-header-row *matHeaderRowDef="columnasClientes"></tr>
                 <tr mat-row *matRowDef="let row; columns: columnasClientes"></tr>
             </table>
-            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+            <mat-paginator [pageSizeOptions]="[8, 10, 20]" showFirstLastButtons>
             </mat-paginator>
         </div>
 

@@ -7,11 +7,12 @@ import { ClienteService } from 'src/app/services/cliente.service';
 import { DialogAddCredencialesComponent } from '../dialog-add-credenciales/dialog-add-credenciales.component';
 import { DialogEnviarCredencialesComponent } from '../dialog-enviar-credenciales/dialog-enviar-credenciales.component';
 import Swal from 'sweetalert2';
+import { NavbarComponent } from "../../navbar/navbar.component";
 
 @Component({
   selector: 'app-list-cliente',
   templateUrl: './list-cliente.component.html',
-  styleUrls: ['./list-cliente.component.css']
+  styleUrls: ['./list-cliente.component.css'],
 })
 export class ListClienteComponent implements OnInit, AfterViewInit {
 
@@ -26,6 +27,18 @@ export class ListClienteComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.listarClientes();
+
+    this.clientes.filterPredicate = (data: Clientes, filter: string) => {
+      const dataStr = `
+      ${data.ruc},
+      ${data.nombre_cliente},
+      ${data.correo_cliente},
+      ${data.usuario_portal},
+      ${data.clave_portal},
+      ${data.idVendedor.id_vendedor},
+      ${data.idVendedor.nombres}`.toLocaleLowerCase();
+      return dataStr.includes(filter);
+    }
   }
 
   ngAfterViewInit(): void {
@@ -82,6 +95,23 @@ export class ListClienteComponent implements OnInit, AfterViewInit {
         )
       }
     )
+  }
+
+  revalidarAccesosPortal():void{
+    this.clienteService.revalidarAccesosPortal().subscribe(
+      () => {
+        this.listarClientes();
+        Swal.fire({
+          text: 'Accesos al Portal actualizados',
+          icon: 'success'
+        });
+      }
+    )
+  }
+
+  filtro(event:Event){
+    const filtrarValor = (event.target as HTMLInputElement).value;
+    this.clientes.filter = filtrarValor.trim().toLowerCase();
   }
 
 }
