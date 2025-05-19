@@ -10,7 +10,7 @@ import { HeaderService } from './header.service';
 export class EtiquetasService {
 
   //private apiEtiquetas:string = "http://localhost:8080/api/etiquetas";
-  private apiEtiquetas:string = "http://192.168.1.12:8011/ArticulosBatt/api/etiquetas";
+  private apiEtiquetas:string = "http://192.168.1.10:8082/api/etiquetas";
 
   constructor(private http:HttpClient, private headerService:HeaderService) { }
 

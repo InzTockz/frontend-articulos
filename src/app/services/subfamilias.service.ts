@@ -10,7 +10,7 @@ import { HeaderService } from './header.service';
 export class SubfamiliasService {
 
   //private apiSubFamilia:string = 'http://localhost:8080/subfamilias';
-  private apiSubFamilia:string = 'http://192.168.1.12:8011/ArticulosBatt/subfamilias';
+  private apiSubFamilia:string = 'http://192.168.1.10:8082/subfamilias';
 
   constructor(private http:HttpClient, private header:HeaderService, private hs:HeaderService) { }
 

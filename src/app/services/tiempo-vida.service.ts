@@ -10,7 +10,7 @@ import { HeaderService } from './header.service';
 export class TiempoVidaService {
 
   //private apiTiempoVida:string = "http://localhost:8080/api/tiempo-vida";
-  private apiTiempoVida:string = "http://192.168.1.12:8011/ArticulosBatt/api/tiempo-vida";
+  private apiTiempoVida:string = "http://192.168.1.10:8082/api/tiempo-vida";
 
   constructor(private http:HttpClient, private headerService:HeaderService) { }
 

@@ -11,7 +11,7 @@ import { HeaderService } from './header.service';
 export class ClienteService {
 
   //private apiCliente:string = 'http://localhost:8080/api/clientes'
-  private apiCliente:string = 'http://192.168.1.12:8011/ArticulosBatt/api/clientes';
+  private apiCliente:string = 'http://192.168.1.10:8082/api/clientes';
 
   constructor(private http:HttpClient, private hs:HeaderService) { }
 

@@ -11,7 +11,7 @@ import { Login } from '../models/login';
 export class UsersService {
 
   //private apiUsers:string = 'http://localhost:8080/user';
-  private apiUsers:string = 'http://192.168.1.12:8011/ArticulosBatt/user';
+  private apiUsers:string = 'http://192.168.1.10:8082/user';
 
   constructor(private http:HttpClient, private hs:HeaderService) { }
 
