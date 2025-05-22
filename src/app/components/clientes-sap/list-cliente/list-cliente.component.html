@@ -4,9 +4,14 @@
         <div style="display: flex; flex-direction: row; justify-content: space-between; justify-items: center;">
             <div style="display: flex; flex-direction: row; justify-items: center; align-items: center; gap: 30px;">
                 <a class="move-btn" matTooltip="Revalidar Clientes" [matTooltipShowDelay]="500" (click)="revalidarClientes()"
-                style=""><img src="assets/iconos/actualizar.png"></a>
-            <a class="move-btn" matTooltip="Revalidar Accesos Portal" [matTooltipShowDelay]="500" (click)="revalidarAccesosPortal()">
-                <img src="assets/iconos/credencialesPortal.png"></a>
+                ><img *ngIf="pendiente == true" src="assets/iconos/actualizar.png">
+                <mat-spinner *ngIf="pendiente != true" class="estilo-spinner" [diameter]="45"></mat-spinner>
+            </a>
+                <a class="move-btn" matTooltip="Actualizar Credenciales Portal" [matTooltipShowDelay]="500" 
+                (click)="openDialog3('250ms', '250ms')">
+                    <img src="assets/iconos/credencialesPortal.png">
+                </a>
+                
             </div>
             <div>
                 <mat-form-field appearance="outline">

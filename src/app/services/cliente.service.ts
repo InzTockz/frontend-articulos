@@ -38,4 +38,10 @@ export class ClienteService {
   enviarCredenciales(email:string, id:number):Observable<any>{
     return this.http.post<any>(`${this.apiCliente}/enviarCredenciales/email/${email}/id/${id}`, null, {headers: this.hs.getHeader()});
   }
+
+  cargarCredencilesPortal(archivo:File):Observable<void>{
+    const formData = new FormData();
+    formData.append('archivo', archivo)
+    return this.http.post<void>(`${this.apiCliente}/leer`, formData, {headers: this.hs.getHeader()});
+  }
 }

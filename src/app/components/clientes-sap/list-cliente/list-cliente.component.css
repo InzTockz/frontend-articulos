@@ -33,3 +33,7 @@
 .move-btn:hover img {
   transform: scale(1.2); /* Mueve la imagen hacia arriba */
 }
+
+.estilo-spinner{
+  size: 10px;
+}

@@ -10,22 +10,22 @@ import { UpdateSubfamiliaComponent } from './components/subfamilias/update-subfa
 import { ListSubfamiliaComponent } from './components/subfamilias/list-subfamilia/list-subfamilia.component';
 import { ListArticuloComponent } from './components/articulos/list-articulo/list-articulo.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { HttpClientModule} from '@angular/common/http';
-import {MatTableModule} from '@angular/material/table';
-import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
+import { HttpClientModule } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatSelectModule} from '@angular/material/select';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule, MatOptionModule, NativeDateAdapter } from '@angular/material/core';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+import { DateAdapter, MAT_DATE_LOCALE, MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import { RegisterComponent } from './components/authentication/register/register.component';
 import { LoginComponent } from './components/authentication/login/login.component';
 import { HomeComponent } from './components/home/home.component';
@@ -33,7 +33,7 @@ import { UserListComponent } from './components/user/user-list/user-list.compone
 import { FamiliasReporteComponent } from './components/reportes/familias-reporte/familias-reporte.component';
 import { SubfamiliasReporteComponent } from './components/reportes/subfamilias-reporte/subfamilias-reporte.component';
 import { ArticulosReporteComponent } from './components/reportes/articulos-reporte/articulos-reporte.component';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { CustomDateAdapter } from './utils/custom-date-adapter';
 import { DatePipe } from '@angular/common';
 import { DialogAddArticuloComponent } from './components/articulos/dialog-add-articulo/dialog-add-articulo.component';
@@ -42,16 +42,19 @@ import { DialogUpdateFamiliaComponent } from './components/familias/dialog-updat
 import { DialogAddSubfamiliaComponent } from './components/subfamilias/dialog-add-subfamilia/dialog-add-subfamilia.component';
 import { DialogUpdateSubfamiliaComponent } from './components/subfamilias/dialog-update-subfamilia/dialog-update-subfamilia.component';
 import { DialogUpdateArticulosComponent } from './components/articulos/dialog-update-articulos/dialog-update-articulos.component';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ListClienteComponent } from './components/clientes-sap/list-cliente/list-cliente.component';
 import { DialogAddCredencialesComponent } from './components/clientes-sap/dialog-add-credenciales/dialog-add-credenciales.component';
 import { DialogEnviarCredencialesComponent } from './components/clientes-sap/dialog-enviar-credenciales/dialog-enviar-credenciales.component';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { DialogAddUserComponent } from './components/user/dialog-add-user/dialog-add-user.component';
 import { DialogUpdateUserComponent } from './components/user/dialog-update-user/dialog-update-user.component';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { DialogInfoArticulosComponent } from './components/articulos/dialog-info-articulos/dialog-info-articulos.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { DialogCargarCredencialesComponent } from './components/clientes-sap/dialog-cargar-credenciales/dialog-cargar-credenciales.component';
+import { MatDividerModule } from '@angular/material/divider';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -80,7 +83,8 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     DialogEnviarCredencialesComponent,
     DialogAddUserComponent,
     DialogUpdateUserComponent,
-    DialogInfoArticulosComponent
+    DialogInfoArticulosComponent,
+    DialogCargarCredencialesComponent
   ],
   imports: [
     BrowserModule,
@@ -108,12 +112,14 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     MatCheckboxModule,
     MatPaginatorModule,
     MatTooltipModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    MatDividerModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     DatePipe,
-    { provide: MAT_DATE_LOCALE, useValue: 'es-ES'},
-    { provide: DateAdapter, useClass: CustomDateAdapter},
+    { provide: MAT_DATE_LOCALE, useValue: 'es-ES' },
+    { provide: DateAdapter, useClass: CustomDateAdapter },
     //{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]

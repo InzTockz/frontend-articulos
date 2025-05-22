@@ -1,0 +1,18 @@
+<h1 mat-dialog-title style="text-align: center;">Actualizar/Agregar Credenciales</h1>
+<mat-divider></mat-divider>
+<div mat-dialog-content>
+    <form #formValid="ngForm">
+        <div class="container-main flex">
+            <div class="container-main flex-btn">
+                <input *ngIf="pendiente != true" type="file" style="padding: 3px;" (change)="cargarArchivoSeleccionado($event)" name="usuario" accept=".xlsx" required>
+                <button *ngIf="pendiente != true" type="submit" #inputArchivo mat-raised-button color="primary" [disabled]="!formValid.valid"
+                (click)="actualizarCredenciales()">Cargar</button>
+                <mat-spinner *ngIf="pendiente == true"></mat-spinner>
+            </div>
+        </div>
+    </form>
+</div>
+<mat-divider></mat-divider>
+<div mat-dialog-actions align="center">
+    <button mat-raised-button mat-dialog-close>Cancelar</button>
+</div>

@@ -8,6 +8,7 @@ import { DialogAddCredencialesComponent } from '../dialog-add-credenciales/dialo
 import { DialogEnviarCredencialesComponent } from '../dialog-enviar-credenciales/dialog-enviar-credenciales.component';
 import Swal from 'sweetalert2';
 import { NavbarComponent } from "../../navbar/navbar.component";
+import { DialogCargarCredencialesComponent } from '../dialog-cargar-credenciales/dialog-cargar-credenciales.component';
 
 @Component({
   selector: 'app-list-cliente',
@@ -17,13 +18,14 @@ import { NavbarComponent } from "../../navbar/navbar.component";
 export class ListClienteComponent implements OnInit, AfterViewInit {
 
   clientes = new MatTableDataSource<Clientes>()
-  columnasClientes:string[] = ['Ruc', 'Nombre', 'Correo', 'Usuario Portal', 'Clave Portal', 'Id Vendedor', 'Nombres',
+  columnasClientes: string[] = ['Ruc', 'Nombre', 'Correo', 'Usuario Portal', 'Clave Portal', 'Id Vendedor', 'Nombres',
     'Accion'
   ]
+  pendiente: boolean = true;
 
-  @ViewChild(MatPaginator) paginator!:MatPaginator;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private clienteService:ClienteService, public dialog:MatDialog){}
+  constructor(private clienteService: ClienteService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.listarClientes();
@@ -45,7 +47,7 @@ export class ListClienteComponent implements OnInit, AfterViewInit {
     this.clientes.paginator = this.paginator
   }
 
-  listarClientes(){
+  listarClientes() {
     this.clienteService.getClientes().subscribe(
       data => {
         this.clientes.data = data;
@@ -53,7 +55,7 @@ export class ListClienteComponent implements OnInit, AfterViewInit {
     )
   }
 
-  openDialog(enterAnimationDuration:string, exitAnimationDuration:string, id:number):void{
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string, id: number): void {
     const dialogRef = this.dialog.open(DialogAddCredencialesComponent, {
       data: id,
       width: '500px',
@@ -68,7 +70,7 @@ export class ListClienteComponent implements OnInit, AfterViewInit {
     )
   }
 
-  openDialog2(enterAnimationDuration:string, exitAnimationDuration:string, id:number):void{
+  openDialog2(enterAnimationDuration: string, exitAnimationDuration: string, id: number): void {
     const dialogRef = this.dialog.open(DialogEnviarCredencialesComponent, {
       data: id,
       width: '500px',
@@ -83,21 +85,36 @@ export class ListClienteComponent implements OnInit, AfterViewInit {
     )
   }
 
-  revalidarClientes():void{
+  openDialog3(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    const dialogRef = this.dialog.open(DialogCargarCredencialesComponent, {
+      width: '500px',
+      enterAnimationDuration,
+      exitAnimationDuration
+    });
+
+    dialogRef.afterClosed().subscribe(
+      () => {
+        this.listarClientes();
+      }
+    )
+  }
+
+  revalidarClientes(): void {
+    this.pendiente = false;
     this.clienteService.revalidarCredenciales().subscribe(
       () => {
+        this.pendiente = true
         this.listarClientes();
         Swal.fire(
           {
             text: 'Clientes actualizados',
             icon: 'success'
-          }
-        )
+          });
       }
     )
   }
 
-  revalidarAccesosPortal():void{
+  revalidarAccesosPortal(): void {
     this.clienteService.revalidarAccesosPortal().subscribe(
       () => {
         this.listarClientes();
@@ -109,7 +126,7 @@ export class ListClienteComponent implements OnInit, AfterViewInit {
     )
   }
 
-  filtro(event:Event){
+  filtro(event: Event) {
     const filtrarValor = (event.target as HTMLInputElement).value;
     this.clientes.filter = filtrarValor.trim().toLowerCase();
   }
